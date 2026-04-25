@@ -1,0 +1,290 @@
+\documentclass[paper=a4,fontsize=11pt,lualatex]{jlreq}
+
+% --- 物理・数学に必須のパッケージ ---
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{physics} % 微分やブラケット記法の記述を簡略化
+\usepackage{bm}      % 太字の斜体（ベクトル）を扱うため
+
+% --- 画像・図表 ---
+\usepackage{graphicx}
+\usepackage{booktabs} % 綺麗な罫線の表を作成
+
+% --- ハイパーリンク ---
+\usepackage[unicode,hidelinks]{hyperref}
+
+% --- タイトル情報 ---
+\title{一端を固定された紐の落下挙動の解析}
+\author{所属：埼玉県立大宮高等学校物理部 \\ 氏名：黒瀬 諭一朗}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+本研究は，一様な重力場の中にある一端を固定された紐の落下挙動を解析したものである．
+紐を「$N$個の剛体棒と質点からなる$N$重振り子」として定式化し，
+$N\rightarrow\infty$の極限をとることで解析を行った．
+その結果，紐は初期状態の直線を保ったまま落下をしようとするが，固定端にデルタ関数的な特異性が現れ，
+固定端付近で紐が折れ曲がることがわかった．
+
+ただし，本解析では時刻$t$を微小量と仮定したため，落下が進んだときの挙動の解明には課題を残した．
+今後の展望として，有限な時間経過における挙動の解析が望まれる．
+\end{abstract}
+
+\section{研究の背景と目的}
+参考文献[1]で行われた32重振り子のシミュレーションにおいて，落下開始時の挙動が紐のように見えた．
+この挙動を観察すると，32重振り子は初期状態の直線を保ったまま落下しようとするが，
+時間経過と共に固定端側から折れ曲がってゆくという現象が見られた．
+同時に，紐という連続的な物体がどのように運動するのかという疑問が生じた．
+一端を固定された紐の落下挙動を解明することを目的として，本研究を行った．
+
+\section{解析の方法}
+まず，紐を$N$等分することによって，
+「$N$個の剛体棒と質点からなる$N$重振り子」として定式化する．
+次に，$N$重振り子のラグランジアンを導出し，運動方程式を得る．
+最後に，$N\rightarrow\infty$の極限をとり，その結果の物理的意味を考察する．
+
+\section{結果}
+\subsection{紐の定式化}
+紐の長さを$l$，質量を$m$とする．紐を$N$等分し，長さ$\varDelta l = l/N$の剛体棒と，
+質量$\varDelta m = m/N$の質点が連なった$N$重振り子を考える．
+初期状態において，振り子は鉛直線と角度$\theta$をなす直線上で静止しているとする．
+固定端を原点とし，地面と平行に$x$軸，鉛直下向きに$y$軸をとる．
+時刻$t = 0$において静止状態から自由落下させた．
+
+時刻$t$における$j$番目の質点が鉛直線となす角度を$\varphi_j$とすると，
+時刻$t$における$i$番目の質点の座標$\left(x_i, y_i\right)$は，次のように表される．
+\begin{equation*}
+  x_i = \varDelta l \sum_{j = 1}^{i} \sin \varphi_j, \quad
+  y_i = \varDelta l \sum_{j = 1}^{i} \cos \varphi_j.
+\end{equation*}
+
+\subsection{ラグランジアンの導出}
+系の運動エネルギー$T$は，
+\begin{equation*}
+  T = \frac{1}{2} \varDelta m \sum_{i = 1}^{N} \left(\dot{x_i}^2 + \dot{y_i}^2\right)
+\end{equation*}
+と表される．ここで，
+\begin{equation*}
+  \dot{x_i}^2 + \dot{y_i}^2
+  = \left(\varDelta l \sum_{j = 1}^{i} \dot{\varphi_j} \cos \varphi_j\right)^2
+  + \left(\varDelta l \sum_{j = 1}^{i} \dot{\varphi_j} \sin \varphi_j\right)^2.
+\end{equation*}
+これを展開して整理すると次のようになる．
+\begin{equation*}
+  \dot{x_i}^2 + \dot{y_i}^2
+  = {\varDelta l}^2 \sum_{j = 1}^{i} \sum_{k = 1}^{i}
+    \dot{\varphi_j} \dot{\varphi_k} \cos \left(\varphi_j - \varphi_k\right).
+\end{equation*}
+したがって，
+\begin{equation*}
+  T = \frac{1}{2} \varDelta m {\varDelta l}^2
+      \sum_{i = 1}^{N} \sum_{j = 1}^{i} \sum_{k = 1}^{i}
+      \dot{\varphi_j} \dot{\varphi_k} \cos \left(\varphi_j - \varphi_k\right).
+\end{equation*}
+これは和の順序を入れ替えることで次のように変形できる．
+\begin{equation}
+  T = \frac{1}{2} \varDelta m {\varDelta l}^2
+      \sum_{j = 1}^{N} \sum_{k = 1}^{N} \left(N - \max \left(j, k\right) + 1\right)
+      \dot{\varphi_j} \dot{\varphi_k} \cos \left(\varphi_j - \varphi_k\right).
+\end{equation}
+
+一方，系のポテンシャル・エネルギー$U$は，
+\begin{equation*}
+  U = - \varDelta m g \sum_{i = 1}^{N} y_i
+\end{equation*}
+すなわち，
+\begin{equation*}
+  U = - \varDelta m g \varDelta l \sum_{i = 1}^{N} \sum_{j = 1}^{i} \cos \varphi_j
+\end{equation*}
+と表される．これは和の順序を入れ替えることで次のように変形できる．
+\begin{equation}
+  U = - \varDelta m g \varDelta l \sum_{j = 1}^{N} \left(N - j + 1\right)
+      \cos \varphi_j.
+\end{equation}
+
+(1)，(2)によりラグランジアン$L = T - U$が構成され，ラグランジュ方程式
+\begin{equation}
+  \frac{\mathrm{d}}{\mathrm{d}t} \frac{\partial L}{\partial \dot{\varphi_k}}
+  - \frac{\partial L}{\partial \varphi_k} = 0
+  \quad \left(k = 1, 2, \dots, N\right)
+\end{equation}
+が定まる．
+
+\subsection{運動方程式の導出}
+本研究で考えるのは落下挙動であるため，$t$は微小であるとする．
+
+初期条件により，$t = 0$において角速度は$0$，角度は$\theta$である．
+したがって，$t = 0$における角加速度を$\alpha_k$とおくと，$t$が微小のとき，
+$\varphi_k$は$t = 0$まわりでテイラー展開することで次のように表される．
+\begin{equation}
+  \varphi_k = \theta + \frac{\alpha_k}{2}t^2.
+\end{equation}
+
+$\alpha_k$を得るために，(3)に$t = 0$を代入した式
+\begin{equation}
+  \left.\frac{\mathrm{d}}{\mathrm{d}t} \frac{\partial L}{\partial \dot{\varphi_k}}\right|_{t = 0}
+  - \left.\frac{\partial L}{\partial \varphi_k}\right|_{t = 0} = 0
+\end{equation}
+を計算する．
+
+(5)の第一項を求める．$L$を$\dot{\varphi_k}$で偏微分すると，
+\begin{equation*}
+  \frac{\partial L}{\partial \dot{\varphi_k}}
+  = \frac{\partial}{\partial \dot{\varphi_k}}
+    \frac{1}{2} \varDelta m {\varDelta l}^2
+    \sum_{a = 1}^{N} \sum_{b = 1}^{N} \left(N - \max \left(a, b\right) + 1\right)
+    \dot{\varphi_a} \dot{\varphi_b} \cos \left(\varphi_a - \varphi_b\right)
+\end{equation*}
+であり，
+\begin{equation*}
+  C_{ab} = \frac{1}{2} \varDelta m {\varDelta l}^2 \left(N - \max \left(a, b\right) + 1\right)
+           \cos \left(\varphi_a - \varphi_b\right)
+\end{equation*}
+とおくと，
+\begin{equation*}
+  \frac{\partial L}{\partial \dot{\varphi_k}}
+  = \sum_{a = 1}^{N} \sum_{b = 1}^{N} C_{ab}
+    \frac{\partial}{\partial \dot{\varphi_k}} \dot{\varphi_a} \dot{\varphi_b}.
+\end{equation*}
+積の微分により，
+\begin{equation*}
+  \frac{\partial L}{\partial \dot{\varphi_k}}
+  = \sum_{a = 1}^{N} \sum_{b = 1}^{N} C_{ab}
+    \left(\frac{\partial \dot{\varphi_a}}{\partial \dot{\varphi_k}} \dot{\varphi_b}
+        + \frac{\partial \dot{\varphi_b}}{\partial \dot{\varphi_k}} \dot{\varphi_a}\right).
+\end{equation*}
+すなわち，
+\begin{equation*}
+  \frac{\partial L}{\partial \dot{\varphi_k}}
+  = \sum_{a = 1}^{N} \sum_{b = 1}^{N} C_{ab}
+    \frac{\partial \dot{\varphi_a}}{\partial \dot{\varphi_k}} \dot{\varphi_b}
+  + \sum_{a = 1}^{N} \sum_{b = 1}^{N} C_{ab}
+    \frac{\partial \dot{\varphi_b}}{\partial \dot{\varphi_k}} \dot{\varphi_a}.
+\end{equation*}
+$\partial \dot{\varphi_a}/\partial \dot{\varphi_k}$は，
+$a = k$のとき$1$，$a \neq k$のとき$0$であり，$b$についても同様である．したがって，
+\begin{equation*}
+  \frac{\partial L}{\partial \dot{\varphi_k}}
+  = \sum_{b = 1}^{N} C_{kb} \dot{\varphi_b} + \sum_{a = 1}^{N} C_{ak} \dot{\varphi_a}.
+\end{equation*}
+$a$，$b$を$j$に置き換えて整理すると，
+\begin{equation*}
+  \frac{\partial L}{\partial \dot{\varphi_k}} = 2 \sum_{j = 1}^{N} C_{jk} \dot{\varphi_j}.
+\end{equation*}
+すなわち，
+\begin{equation*}
+  \frac{\partial L}{\partial \dot{\varphi_k}}
+  = \varDelta m {\varDelta l}^2 \sum_{j = 1}^{N}
+    \left(N - \max \left(j, k\right) + 1\right) \dot{\varphi_j}
+    \cos \left(\varphi_j - \varphi_k\right).
+\end{equation*}
+これを$t$について微分し，$t = 0$を代入すると，初期条件より，
+\begin{equation}
+  \left.\frac{\mathrm{d}}{\mathrm{d}t} \frac{\partial L}{\partial \dot{\varphi_k}}\right|_{t = 0}
+  = \varDelta m {\varDelta l}^2 \sum_{j = 1}^{N}
+    \left(N - \max \left(j, k\right) + 1\right) \alpha_j.
+\end{equation}
+
+(5)の第二項を求める．$L$を$\varphi_k$で偏微分し，$t = 0$を代入すると，初期条件より，
+\begin{equation}
+  \left.\frac{\partial L}{\partial \varphi_k}\right|_{t = 0}
+  = - \varDelta m g \varDelta l \left(N - k + 1\right) \sin \theta.
+\end{equation}
+
+(6)，(7)より，(5)は，
+\begin{equation*}
+  \varDelta m {\varDelta l}^2 \sum_{j = 1}^{N}
+  \left(N - \max \left(j, k\right) + 1\right) \alpha_j
+  + \varDelta m g \varDelta l \left(N - k + 1\right) \sin \theta = 0.
+\end{equation*}
+両辺を$\varDelta m$で割って整理すると，$\alpha_j$に関する次の方程式が得られる．
+\begin{equation}
+  \sum_{j = 1}^{N} \left(N \varDelta l
+  - \max \left(j \varDelta l, k \varDelta l\right) + \varDelta l\right) \alpha_j
+  \varDelta l + g \left(N \varDelta l - k \varDelta l + \varDelta l\right) \sin \theta = 0.
+\end{equation}
+
+\subsection{$N \rightarrow \infty$の極限}
+式(8)における，$N \rightarrow \infty$の極限を考える．
+固定端からの距離を$s' = j \varDelta l$，$s = k \varDelta l$と対応させる．
+$N \rightarrow \infty$において和は積分となり，角加速度$\alpha_j$は$s'$の関数$\alpha\left(s'\right)$となるため，
+式(8)は次の積分方程式となる．
+\begin{equation}
+  \int_{0}^{l} \left(l - \max \left(s', s\right)\right)
+  \alpha\left(s'\right) \,\mathrm{d}s'
+  + g \left(l - s\right) \sin \theta = 0. 
+\end{equation}
+積分区間を分割して整理すると，
+\begin{equation*}
+  \left(l - s\right) \int_{0}^{s} \alpha\left(s'\right) \,\mathrm{d}s'
+  + \int_{s}^{l} \left(l - s'\right) \alpha\left(s'\right) \,\mathrm{d}s'
+  + g \left(l - s\right) \sin \theta = 0.
+\end{equation*}
+両辺を$s$について微分すると，
+\begin{equation*}
+  \left( - \int_{0}^{s} \alpha\left(s'\right) \,\mathrm{d}s'
+  + \left(l - s\right) \alpha\left(s\right) \right)
+  - \left(l - s\right) \alpha\left(s\right)
+  - g \sin \theta = 0.
+\end{equation*}
+すなわち，
+\begin{equation}
+  \int_{0}^{s} \alpha\left(s'\right) \,\mathrm{d}s' = -g \sin \theta.
+\end{equation}
+$s > 0$において，両辺を$s$について微分すると，
+\begin{equation}
+  \alpha\left(s\right) = 0 \quad \left(s > 0\right).
+\end{equation}
+(10)，(11)を満たすためには，ディラックのデルタ関数$\delta \left(s\right)$が必要となる．
+したがって，(9)の解は次のように表される．
+\begin{equation}
+  \alpha\left(s\right) = -g \sin \theta \cdot \delta \left(s\right).
+\end{equation}
+
+(4)，(12)より，固定端からの距離が$s$である点における紐の接線と鉛直線がなす角度
+$\varphi \left(s\right)$は，次のように表される．
+\begin{equation}
+  \varphi\left(s\right) = \theta - \frac{1}{2} g t^2 \sin \theta \cdot \delta \left(s\right).
+\end{equation}
+
+\section{考察}
+\subsection{デルタ関数が意味する物理現象}
+$s > 0$において，$\varphi\left(s\right) = \theta$であることは，
+紐が固定端以外の部分において，初期状態の直線を保ったまま落下することを示している．
+つまり，自由端側の紐は一本の剛体棒のように振る舞い，平行移動的に落下しようとする．
+
+$s = 0$において$\varphi\left(s\right)$が無限大となるのは，
+固定端における拘束力が，紐全体を直線的に保とうとする慣性と衝突し，特異点を生じさせているためだと考えた．
+しかし，物理的に角度が無限大になることはあり得ない．
+これは，現実の紐には太さや曲げ剛性が存在するためだと考えた．
+
+\subsection{式(13)の適用範囲がもつ限界}
+「研究の背景」において，32重振り子のシミュレーションでは，
+「時間経過と共に固定端側から折れ曲がってゆく」と観察していた．
+しかし，本研究で導いた極限では，「固定端付近で折れ曲がる」という一箇所に集中した特異性が示された．
+これは，本解析では$t$を微小量として扱い，$t$の三次以上の項を無視したためだと考えた．
+つまり，式(13)の適用範囲が紐の固定を解除した瞬間とその直後のみであったため，
+落下が進んだときの挙動を表せなかったのだと考えた．
+
+\subsection{落下が進んだときの挙動に関する予想}
+本研究が示す結果とシミュレーションの観察による結果の整合性を考えて，
+「固定端に見られたデルタ関数的な特異性は，落下が進むにつれて紐の自由端側へ伝搬する」
+と予想した．
+
+\section{結論}
+本研究により，紐は固定を解除した瞬間とその直後において，初期状態の直線を保ったまま落下をしようとするが，
+固定端にデルタ関数的な特異性が現れ，固定端付近で紐が折れ曲がることが確認された．
+しかし，時刻$t$を微少量としたため，落下挙動の解明には至らなかった．
+
+今後は，有限な時間経過における紐の落下挙動を解析する手法を模索していきたい．
+
+\begin{thebibliography}{99}
+\bibitem{reference1} Shiki. N重振り子の運動方程式. note, 2022. \url{https://note.com/sciencecafe_mc2/n/ne5077e5a62f1}, (参照 2024-05-20).
+\bibitem{reference2} ランダウ=リフシッツ. 力学. 東京図書, 2024.
+\bibitem{reference3} 小出昭一郎. 解析力学. 岩波書店, 2024.
+\bibitem{reference4} 杉山忠男. 理論物理への道標. 河合出版, 2016.
+\end{thebibliography}
+
+\end{document}

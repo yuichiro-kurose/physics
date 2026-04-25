@@ -1,0 +1,55 @@
+\documentclass[paper=a4,fontsize=11pt,lualatex]{jlreq}
+
+% --- 物理・数学に必須のパッケージ ---
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{physics} % 微分やブラケット記法の記述を簡略化
+\usepackage{bm}      % 太字の斜体（ベクトル）を扱うため
+
+% --- 画像・図表 ---
+\usepackage{graphicx}
+\usepackage{booktabs} % 綺麗な罫線の表を作成
+
+% --- ハイパーリンク ---
+\usepackage[unicode,hidelinks]{hyperref}
+
+% --- タイトル情報 ---
+\title{【レポート課題名】○○に関する理論的考察と検証}
+\author{学籍番号：00000000 \\ 氏名：物理 太郎}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+本レポートでは、○○の原理について検証し、その理論的背景と実験結果を比較検討する。特に、△△の条件下における系の振る舞いについて詳細な考察を行う。
+\end{abstract}
+
+\section{はじめに}
+物理現象の背景にある法則を理解することは不可欠である。本稿では、○○の基礎方程式を導出し、その物理的意味を論じる。
+
+\section{理論}
+系のハミルトニアンを $\hat{H}$ とすると、時間依存のシュレーディンガー方程式は以下のように記述される。
+\begin{equation}
+    i\hbar \pdv{\Psi(\bm{r}, t)}{t} = \hat{H} \Psi(\bm{r}, t)
+\end{equation}
+ここで、$\hbar$ はディラック定数、$\Psi(\bm{r}, t)$ は波動関数である。
+
+\section{実験・計算方法}
+（※実験や数値計算の具体的な手法を記述する。）
+
+\section{結果}
+得られた結果を図表を用いて客観的に述べる。
+
+\section{考察}
+結果に対する物理的な解釈や、理論値とのズレの要因（近似の限界、測定誤差など）について議論する。
+
+\section{結論}
+本検証により、○○の妥当性が確認された。今後の展望としては、△△の要因を取り入れたより厳密なモデルの構築が挙げられる。
+
+\begin{thebibliography}{99}
+\bibitem{reference1} 著者名, \textit{書名}, 出版社, 出版年.
+\bibitem{reference2} A. Einstein, \textit{Annalen der Physik}, \textbf{322}, 132-148 (1905).
+\end{thebibliography}
+
+\end{document}
