@@ -35,9 +35,12 @@
         初期状態において振り子は鉛直線と角度$\theta$をなす直線上で静止しているとした．
   \item 系の運動エネルギーとポテンシャル・エネルギーを導出し，ラグランジアン$L$を構成した．
   \item 落下挙動を調べるため，時刻$t$は微少量であると仮定した。時刻$t = 0$における各質点の角加速度を$\alpha_k$とおき，
-        各質点の角度$\varphi_k$はテイラー展開を用いて$\varphi_k = \theta + \frac{1}{2} \alpha_k t^2$と近似した．
+        各質点の鉛直線となす角度$\varphi_k$はテイラー展開を用いて$\varphi_k = \theta + \frac{1}{2} \alpha_k t^2$と近似した．
   \item ラグランジアンから運動方程式を得た後，$N \to \infty$の極限を取ることで，連続体としての紐の挙動を解析した．
 \end{enumerate}
+\begin{center}
+  \includegraphics[width=8cm]{figure1.png}
+\end{center}
 
 \section{結果}
 \subsection{$N$重振り子の運動方程式}
@@ -46,7 +49,7 @@
   \left.\frac{\mathrm{d}}{\mathrm{d}t} \frac{\partial L}{\partial \dot{\varphi_k}}\right|_{t = 0}
   - \left.\frac{\partial L}{\partial \varphi_k}\right|_{t = 0} = 0
 \end{equation*}
-を計算することで，角加速度に関する以下の方程式を得た．
+を計算することで，初角加速度に関する以下の方程式を得た．
 \begin{equation}
 \begin{align*}
   &\sum_{j = 1}^{N} \left(N \Delta l - \max \left(j \Delta l, k \Delta l\right) + \Delta l\right) \alpha_j \Delta l \\
@@ -55,20 +58,20 @@
 \end{equation}
 \subsection{$N \to \infty$の極限}
 固定端からの長さを$s' = j \Delta l$，$s = k \Delta l$と対応させ，$N \to \infty$の極限を取った．
-これにより，角加速度$\alpha_j$は$s'$の関数$\alpha \left(s'\right)$となり，和は積分に置き換わるため，
+これにより，初角加速度は$s'$の関数$\alpha \left(s'\right)$となり，和は積分に置き換わるため，
 方程式(1)は$\alpha \left(s'\right)$に関する以下の積分方程式となった．
 \begin{equation}
   \int_{0}^{l} \left(l - \max \left(s', s\right)\right)
   \alpha\left(s'\right) \,\mathrm{d}s'
   + g \left(l - s\right) \sin \theta = 0. 
 \end{equation}
-\section{解の導出とデルタ関数の出現}
+\subsection{解の導出とデルタ関数の出現}
 積分方程式(2)の積分区間を$s$で分割し，両辺を$s$について微分することで，以下の積分方程式を得た．
 \begin{equation}
   \int_{0}^{s} \alpha\left(s'\right) \,\mathrm{d}s' = -g \sin \theta.
 \end{equation}
 $\alpha \left(s'\right)$が(3)を満たすためには，ディラックのデルタ関数が必要となることが判明した．
-結果として，固定端からの長さが$s$である点における角加速度$\alpha \left(s\right)$及び角度$\varphi \left(s\right)$は以下のように求められた．
+結果として，固定端からの長さが$s$である点における，初角加速度$\alpha \left(s\right)$及び時刻$t$における角度$\varphi \left(s\right)$は以下のように求められた．
 \begin{equation}
 \begin{align*}
   & \alpha\left(s\right) = -g \sin \theta \cdot \delta \left(s\right), \\
