@@ -1,0 +1,109 @@
+\documentclass[9pt, twocolumn, a4paper]{ltjsarticle}
+\pagestyle{empty}
+
+\usepackage{amsmath, amssymb, amsthm, mathtools}
+\usepackage{bm}
+\usepackage{physics} 
+\usepackage{graphicx}
+\usepackage[unicode, hidelinks]{hyperref}
+\usepackage[margin=15truemm]{geometry}
+
+% \title{一端を固定された紐の落下挙動の解析}
+% \author{黒瀬 諭一朗 \\ 埼玉県立大宮高等学校物理部}
+% \date{\today}
+
+\title{\vspace{-15mm}\Large\textbf{一端を固定された紐の落下挙動の解析}}
+\author{黒瀬 諭一朗（埼玉県立大宮高等学校物理部）\quad \today}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section{研究の背景と目的}
+先行研究の32重振り子のシミュレーションにおいて，振り子が初期状態の直線を保ったまま落下しようとし，
+時間経過とともに固定端側から折れ曲がってゆく現象が観察された．
+この観察から，「紐という連続的な物体がどのように運動するのか」という疑問が生じ，
+一端を固定された紐の自由落下挙動を数学的に解明することを本研究の目的とした．
+
+\section{解析手法}
+本研究では以下の仮定と定式化を用いて解析を行った．
+\begin{enumerate}
+  \item 紐は太さと曲げ剛性を持たないものとした．
+  \item 紐の長さを$l$，質量を$m$とし，これを$N$等分した．
+        「長さ$\Delta l = l / N$の剛体棒と質量$\Delta m = m / N$の質点からなる$N$重振り子」として定式化し，
+        初期状態において振り子は鉛直線と角度$\theta$をなす直線上で静止しているとした．
+  \item 系の運動エネルギーとポテンシャル・エネルギーを導出し，ラグランジアン$L$を構成した．
+  \item 落下挙動を調べるため，時刻$t$は微少量であると仮定した。時刻$t = 0$における各質点の角加速度を$\alpha_k$とおき，
+        各質点の角度$\varphi_k$はテイラー展開を用いて$\varphi_k = \theta + \frac{1}{2} \alpha_k t^2$と近似した．
+  \item ラグランジアンから運動方程式を得た後，$N \to \infty$の極限を取ることで，連続体としての紐の挙動を解析した．
+\end{enumerate}
+
+\section{結果}
+\subsection{$N$重振り子の運動方程式}
+ラグランジュ方程式に$t = 0$を代入した式
+\begin{equation*}
+  \left.\frac{\mathrm{d}}{\mathrm{d}t} \frac{\partial L}{\partial \dot{\varphi_k}}\right|_{t = 0}
+  - \left.\frac{\partial L}{\partial \varphi_k}\right|_{t = 0} = 0
+\end{equation*}
+を計算することで，角加速度に関する以下の方程式を得た．
+\begin{equation}
+\begin{align*}
+  &\sum_{j = 1}^{N} \left(N \Delta l - \max \left(j \Delta l, k \Delta l\right) + \Delta l\right) \alpha_j \Delta l \\
+  & \quad + g \left(N \Delta l - k \Delta l + \Delta l\right) \sin \theta = 0.
+\end{align*}
+\end{equation}
+\subsection{$N \to \infty$の極限}
+固定端からの長さを$s' = j \Delta l$，$s = k \Delta l$と対応させ，$N \to \infty$の極限を取った．
+これにより，角加速度$\alpha_j$は$s'$の関数$\alpha \left(s'\right)$となり，和は積分に置き換わるため，
+方程式(1)は$\alpha \left(s'\right)$に関する以下の積分方程式となった．
+\begin{equation}
+  \int_{0}^{l} \left(l - \max \left(s', s\right)\right)
+  \alpha\left(s'\right) \,\mathrm{d}s'
+  + g \left(l - s\right) \sin \theta = 0. 
+\end{equation}
+\section{解の導出とデルタ関数の出現}
+積分方程式(2)の積分区間を$s$で分割し，両辺を$s$について微分することで，以下の積分方程式を得た．
+\begin{equation}
+  \int_{0}^{s} \alpha\left(s'\right) \,\mathrm{d}s' = -g \sin \theta.
+\end{equation}
+$\alpha \left(s'\right)$が(3)を満たすためには，ディラックのデルタ関数が必要となることが判明した．
+結果として，固定端からの長さが$s$である点における角加速度$\alpha \left(s\right)$及び角度$\varphi \left(s\right)$は以下のように求められた．
+\begin{equation}
+\begin{align*}
+  & \alpha\left(s\right) = -g \sin \theta \cdot \delta \left(s\right), \\
+  & \varphi\left(s\right) = \theta - \frac{1}{2} g t^2 \sin \theta \cdot \delta \left(s\right).
+\end{align*}
+\end{equation}
+
+\section{考察}
+導出された式から，以下の物理的挙動が考察できる．
+\subsection{自由端側の平行移動}
+$s > 0$において$\varphi\left(s\right) = \theta$となり，
+自由端側の紐は剛体棒のように初期状態の直線を保ったまま平行移動的に落下しようとすることが示された．
+\subsection{固定端における特異点}
+$s = 0$において$\varphi\left(s\right)$が無限大になるという特異性が現れた．
+これは，固定端の拘束力と，紐全体を直線に保とうとする慣性が衝突したためだと考えられる．
+\subsection{現実との矛盾}
+物理的に角度が無限大になることは有り得ず，現実の紐が持つ太さや剛性が，特異点での折れ曲がりを発生させることが予想される．
+また，時刻を微少量として$t$の三次以上の項を無視したため，
+落下が進むにつれて折れ曲がりが自由端側へ伝搬していく様子までは表現できなかったと考えられる．
+
+\section{結論}
+紐は自由落下を開始した瞬間とその直後において，固定端以外の部分は初期状態の直線を保ったまま落下しようとすることが確認された．
+しかし，固定端にはデルタ関数的な特異性が現れ，数学的結果と物理的現実との間に矛盾が生じた．
+
+今後の展望として，紐の太さと曲げ剛性を考慮した上で，有限な時間経過における落下挙動を解析する手法の構築が望まれる．
+
+\begin{thebibliography}{99}
+\bibitem{ref:web1} 
+  Shiki, ``N重振り子の運動方程式,'' note. \url{https://note.com/sciencecafe_mc2/n/ne5077e5a62f1} (閲覧日: 2026年4月20日).
+\bibitem{ref:book1} 
+  ランダウ=リフシッツ, 『力学』, 東京図書, 1974.
+\bibitem{ref:book2} 
+  小出昭一郎, 『解析力学』, 岩波書店, 1983.
+\bibitem{ref:book3} 
+  杉山忠男, 『理論物理への道標』, 河合出版, 2016.
+\end{thebibliography}
+
+\end{document}
