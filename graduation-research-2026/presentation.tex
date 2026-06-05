@@ -166,19 +166,44 @@
   \end{equation}
 \end{frame}
 
-\begin{frame}{結果：$N \rightarrow \infty$ の極限と積分方程式}
-  ラグランジュ方程式から得られた連立方程式に対し，固定端からの長さを $s' = j \Delta l$ , $s = k \Delta l$ と対応させて $N \rightarrow \infty$ の極限を取る．
+\begin{frame}{結果：運動方程式の導出}
+  $\alpha_k$を得るために，ラグランジュ方程式に$t = 0$を代入した式
+  \begin{equation}
+    \left.\frac{\mathrm{d}}{\mathrm{d}t} \frac{\partial L}{\partial \dot{\varphi_k}}\right|_{t = 0}
+    - \left.\frac{\partial L}{\partial \varphi_k}\right|_{t = 0} = 0
+    \quad \left(k = 1, 2, \dots, N\right)
+  \end{equation}
+  を計算する．
+  \vspace{1em}
+
+  (10)を代入して整理すると，$\alpha_j$に関する次の方程式が得られる：
+  \begin{equation}
+    \sum_{j = 1}^{N} \left(N \Delta l
+    - \max \left(j \Delta l, k \Delta l\right) + \Delta l\right) \alpha_j
+    \Delta l + g \left(N \Delta l - k \Delta l + \Delta l\right) \sin \theta = 0
+  \end{equation}
+
   
+\end{frame}
+
+\begin{frame}{結果：$N \rightarrow \infty$ の極限と積分方程式}
+  式(13)に対し，固定端からの長さを $s' = j \Delta l$ , $s = k \Delta l$ と対応させて $N \rightarrow \infty$ の極限を取る．
   \vspace{1em}
+  
   和が積分に置き換わり，初角加速度 $\alpha(s')$ に関する以下の\textbf{積分方程式}を得た：
-  \begin{equation*}
+  \begin{equation}
     \int_{0}^{l} \left(l - \max(s', s)\right) \alpha(s') \,ds' + g(l - s)\sin\theta = 0
-  \end{equation*}
-  \vspace{1em}
+  \end{equation}
+  積分区間を分割して整理すると：
+  \begin{equation}
+    \left(l - s\right) \int_{0}^{s} \alpha\left(s'\right) \,\mathrm{d}s'
+    + \int_{s}^{l} \left(l - s'\right) \alpha\left(s'\right) \,\mathrm{d}s'
+    + g \left(l - s\right) \sin \theta = 0
+  \end{equation}
   両辺を $s$ について微分して整理すると：
-  \begin{equation*}
+  \begin{equation}
     \int_{0}^{s} \alpha(s') \,ds' = -g \sin\theta
-  \end{equation*}
+  \end{equation}
 \end{frame}
 
 \begin{frame}{結果：解の導出とデルタ関数の出現}
