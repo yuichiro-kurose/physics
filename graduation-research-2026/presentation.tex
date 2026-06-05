@@ -24,33 +24,31 @@
   \titlepage
 \end{frame}
 
-% 1. 背景と目的
 \begin{frame}{研究の背景と目的}
   \textbf{背景}
   \begin{itemize}
-    \item 先行研究の32重振り子の落下シミュレーションにおける観察
-    \item 振り子が\textbf{初期状態の直線を保ったまま落下}しようとする
-    \item 時間経過とともに\textbf{固定端側から折れ曲がっていく}現象
+    \item 先行研究の32重振り子の落下シミュレーションにおける観察．
+    \item 振り子が\textbf{初期状態の直線を保ったまま落下}しようとする．
+    \item 時間経過とともに\textbf{固定端側から折れ曲がっていく}現象．
   \end{itemize}
   \vspace{1em}
   
   \textbf{疑問と目的}
   \begin{itemize}
     \item 「紐という連続的な物体はどのように運動するのか？」
-    \item \textbf{一端を固定された紐の自由落下挙動を数学的に解明する}
+    \item \textbf{一端を固定された紐の自由落下挙動を数学的に解明する}．
   \end{itemize}
 \end{frame}
 
-% 2. 解析手法（モデル化）
-\begin{frame}{解析手法（定式化）}
+\begin{frame}{解析手法：定式化}
   \begin{columns}
     \begin{column}{0.6\textwidth}
       \textbf{仮定とモデル}
       \begin{itemize}
-        \item 紐は\textbf{太さと曲げ剛性を持たない}
-        \item 長さ $l$ ，質量 $m$ の紐を $N$ 等分する
-        \item 長さ $\Delta l = l / N$ の剛体棒と質量 $\Delta m = m / N$ の質点からなる\textbf{$N$重振り子}として定式化
-        \item 初期状態：鉛直線と角度 $\theta$ をなす直線上で静止
+        \item 紐は\textbf{太さと曲げ剛性を持たない}．
+        \item 長さ $l$ ，質量 $m$ の紐を $N$ 等分する．
+        \item 長さ $\Delta l = l / N$ の剛体棒と質量 $\Delta m = m / N$ の質点からなる\textbf{$N$重振り子}として定式化．
+        \item 初期状態：鉛直線と角度 $\theta$ をなす直線上で静止．
       \end{itemize}
     \end{column}
     \begin{column}{0.4\textwidth}
@@ -85,35 +83,97 @@
   \end{columns}
 \end{frame}
 
-% 3. 解析手法（アプローチ）
-\begin{frame}{解析手法（アプローチ）}
+\begin{frame}{解析手法：アプローチ}
   \textbf{微小時間の仮定とテイラー展開}
   \begin{itemize}
-    \item 落下挙動を調べるため，時刻 $t$ は微少量であると仮定
-    \item 時刻 $t=0$ における各質点の角加速度を $\alpha_k$ とおく
+    \item 落下挙動を調べるため，時刻 $t$ は微少量であると仮定．
+    \item 時刻 $t=0$ における各質点の角加速度を $\alpha_k$ とおく．
     \item 角度 $\varphi_k$ をテイラー展開で近似：
-    $$ \varphi_k = \theta + \frac{1}{2} \alpha_k t^2 $$
+      \begin{equation}
+        \varphi_k = \theta + \frac{1}{2} \alpha_k t^2
+      \end{equation}
   \end{itemize}
   \vspace{1em}
   
   \textbf{解析の流れ}
   \begin{enumerate}
-    \item 運動エネルギーとポテンシャルからラグランジアン $L$ を構成
-    \item ラグランジュ方程式から初角加速度 $\alpha_j$ に関する連立方程式を導出
-    \item \textbf{$N \rightarrow \infty$ の極限}を取り，連続体としての挙動を解析
+    \item 運動エネルギーとポテンシャルからラグランジアン $L$ を構成．
+    \item ラグランジュ方程式から初角加速度 $\alpha_j$ に関する連立方程式を導出．
+    \item \textbf{$N \rightarrow \infty$ の極限}を取り，連続体としての挙動を解析．
   \end{enumerate}
 \end{frame}
 
-% 4. 結果（積分方程式）
-\begin{frame}{結果（$N \rightarrow \infty$ の極限と積分方程式）}
-  ラグランジュ方程式から得られた連立方程式に対し，固定端からの長さを $s' = j \Delta l$ , $s = k \Delta l$ と対応させて $N \rightarrow \infty$ の極限を取る。
+\begin{frame}{結果：ラグランジアンの構成（座標と変数の設定）}
+  \textbf{座標と変数の設定}
+  \begin{itemize}
+    \item 固定端を原点とし，地面と平行に$x$軸，鉛直下向きに$y$軸を取る．
+    \item 自由落下開始時刻を，$t = 0$とする．
+    \item 時刻$t$における$j$番目の質点が鉛直線となす角度を$\varphi_j$とする．
+    \item 時刻$t$における$i$番目の質点の座標$\left(x_i, y_i\right)$は次のように表される：
+      \begin{equation}
+        x_i = \Delta l \sum_{j = 1}^{i} \sin \varphi_j, \quad y_i = \Delta l \sum_{j = 1}^{i} \cos \varphi_j
+      \end{equation}
+    \item 時刻$t$における$i$番目の質点の速度$\left(\dot{x_i}, \dot{y_i}\right)$は次のように表される：
+      \begin{equation}
+        \dot{x_i} = \Delta l \sum_{j = 1}^{i} \dot{\varphi_j} \cos \varphi_j,\quad \dot{y_i} = \Delta l \sum_{j = 1}^{i} \dot{\varphi_j} \sin \varphi_j
+      \end{equation}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{結果：ラグランジアンの構成（運動エネルギーの導出）}
+  系の運動エネルギー$T$：
+  \begin{equation}
+    T = \frac{1}{2} \Delta m \sum_{i = 1}^{N} \left(\dot{x_i}^2 + \dot{y_i}^2\right)
+  \end{equation}
+  (3)を代入して整理すると：
+  \begin{equation}
+    T = \frac{1}{2} \Delta m {\Delta l}^2
+      \sum_{i = 1}^{N} \sum_{j = 1}^{i} \sum_{k = 1}^{i}
+      \dot{\varphi_j} \dot{\varphi_k} \cos \left(\varphi_j - \varphi_k\right)
+  \end{equation}
+  和の順序を入れ替えると：
+  \begin{equation}
+    T = \frac{1}{2} \Delta m {\Delta l}^2
+        \sum_{j = 1}^{N} \sum_{k = 1}^{N} \left(N - \max \left(j, k\right) + 1\right)
+        \dot{\varphi_j} \dot{\varphi_k} \cos \left(\varphi_j - \varphi_k\right)
+  \end{equation}
+\end{frame}
+
+\begin{frame}{結果：ラグランジアンの構成（ポテンシャル・エネルギーの導出）}
+  系のポテンシャル・エネルギー$U$：
+  \begin{equation}
+    U = - \Delta m g \sum_{i = 1}^{N} y_i
+  \end{equation}
+  (2)を代入すると：
+  \begin{equation}
+    U = - \Delta m g \Delta l \sum_{i = 1}^{N} \sum_{j = 1}^{i} \cos \varphi_j
+  \end{equation}
+  和の順序を入れ替えると：
+  \begin{equation}
+    U = - \Delta m g \Delta l \sum_{j = 1}^{N} \left(N - j + 1\right) \cos \varphi_j
+  \end{equation}
+\end{frame}
+
+\begin{frame}{結果：ラグランジアンの構成}
+  (6)，(9)より，ラグランジアン$L = T - U$が構成される：
+  \begin{equation}
+    \begin{aligned}
+      L &= \frac{1}{2} \Delta m {\Delta l}^2
+           \sum_{j = 1}^{N} \sum_{k = 1}^{N} \left(N - \max \left(j, k\right) + 1\right)
+           \dot{\varphi_j} \dot{\varphi_k} \cos \left(\varphi_j - \varphi_k\right) \\
+        & \quad + \Delta m g \Delta l \sum_{j = 1}^{N} \left(N - j + 1\right) \cos \varphi_j
+    \end{aligned}
+  \end{equation}
+\end{frame}
+
+\begin{frame}{結果：$N \rightarrow \infty$ の極限と積分方程式}
+  ラグランジュ方程式から得られた連立方程式に対し，固定端からの長さを $s' = j \Delta l$ , $s = k \Delta l$ と対応させて $N \rightarrow \infty$ の極限を取る．
   
   \vspace{1em}
   和が積分に置き換わり，初角加速度 $\alpha(s')$ に関する以下の\textbf{積分方程式}を得た：
   \begin{equation*}
     \int_{0}^{l} \left(l - \max(s', s)\right) \alpha(s') \,ds' + g(l - s)\sin\theta = 0
   \end{equation*}
-
   \vspace{1em}
   両辺を $s$ について微分して整理すると：
   \begin{equation*}
@@ -121,8 +181,7 @@
   \end{equation*}
 \end{frame}
 
-% 5. 結果（デルタ関数の出現）
-\begin{frame}{結果（解の導出とデルタ関数の出現）}
+\begin{frame}{結果：解の導出とデルタ関数の出現}
   得られた積分方程式：
   $$ \int_{0}^{s} \alpha(s') \,ds' = -g \sin\theta $$
   
@@ -138,23 +197,21 @@
   \end{align*}
 \end{frame}
 
-% 6. 考察
 \begin{frame}{考察}
-  \textbf{1. 自由端側の平行移動}
+  \textbf{自由端側の平行移動}
   \begin{itemize}
     \item $s > 0$ において $\varphi(s) = \theta$ 
     \item 自由端側の紐は，剛体棒のように\textbf{初期状態の直線を保ったまま平行移動的に落下}しようとする．
   \end{itemize}
   \vspace{1em}
 
-  \textbf{2. 固定端における特異点}
+  \textbf{固定端における特異点}
   \begin{itemize}
     \item $s = 0$ において角度 $\varphi(s)$ が無限大になる．
     \item 原因：「紐全体を直線に保とうとする慣性」と「固定端の拘束力」の衝突．
   \end{itemize}
 \end{frame}
 
-% 7. 結論と展望
 \begin{frame}{結論と今後の展望}
   \textbf{結論}
   \begin{itemize}
