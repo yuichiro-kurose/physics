@@ -15,7 +15,7 @@
 
 \title{一端を固定された紐の落下挙動の解析}
 \author{黒瀬 諭一朗}
-\institute{埼玉県立大宮高等学校物理部}
+\institute{埼玉県立大宮高等学校 物理部}
 \date{\today}
 
 \begin{document}
@@ -42,43 +42,49 @@
 
 \begin{frame}{解析手法：定式化}
   \begin{columns}
-    \begin{column}{0.6\textwidth}
+    \begin{column}{0.58\textwidth}
       \textbf{仮定とモデル}
       \begin{itemize}
         \item 紐は\textbf{太さと曲げ剛性を持たない}．
         \item 長さ $l$ ，質量 $m$ の紐を $N$ 等分する．
-        \item 長さ $\Delta l = l / N$ の剛体棒と質量 $\Delta m = m / N$ の質点からなる\textbf{$N$重振り子}として定式化．
+        \item 長さ $\Delta l = l / N$ の剛体棒と質量 $\Delta m = m / N$ の質点からなる$N$として定式化．
         \item 初期状態：鉛直線と角度 $\theta$ をなす直線上で静止．
       \end{itemize}
     \end{column}
     \begin{column}{0.4\textwidth}
       \centering
-      \begin{tikzpicture}[scale=0.9, >=stealth]
-        % 固定端（原点）
-        \coordinate (O) at (0,0);
-        \fill (O) circle (2.0pt);
-        % 鉛直線
-        \draw[dashed, thick] (O) -- (0, -3.5);
-        % 角度
-        \draw[->, thick] (0, -1.5) arc[start angle=-90, end angle=-60, radius=1.5];
-        \node at (0.4, -1.8) {$\theta$};
-        % 振り子
-        \def\ang{-60}
-        \coordinate (P1) at (\ang:1.2);
-        \coordinate (P2) at (\ang:2.4);
-        \coordinate (P3) at (\ang:3.0);
-        \coordinate (P4) at (\ang:4.2);
-        \draw[very thick] (O) -- (P1);
-        \draw[very thick] (P1) -- (P2);
-        \draw[very thick, dotted] (P2) -- (P3);
-        \draw[very thick] (P3) -- (P4);
-        % 質点
-        \fill (P1) circle (3pt);
-        \fill (P2) circle (3pt) node[below left] {$\Delta m$};
-        \fill (P3) circle (3pt);
-        \fill (P4) circle (3pt);
-        \node at (\ang:1.8) [above right] {$\Delta l$};
-      \end{tikzpicture}
+      \begin{tikzpicture}[scale=1.2, >=stealth]
+      % 固定端（原点）
+      \coordinate (O) at (0,0);
+      \fill (O) circle (2.0pt);
+      % 鉛直線
+      \draw[dashed, thick] (O) -- (0, -3.5);
+      % 角度 \theta の描画
+      \draw[->, thick] (0, -1.5) arc[start angle=-90, end angle=-60, radius=1.5];
+      \node at (0.4, -1.8) {$\theta$};
+      % 振り子の座標設定（鉛直から30度の直線とする）
+      \def\ang{-60}
+      \coordinate (P1) at (\ang:1.2);
+      \coordinate (P2) at (\ang:2.4);
+      \coordinate (P3) at (\ang:3.0);
+      \coordinate (P4) at (\ang:4.2);
+      % 剛体棒の描画（中間を点線にしてN個連続していることを表現）
+      \draw[very thick] (O) -- (P1);
+      \draw[very thick] (P1) -- (P2);
+      \draw[very thick, dotted] (P2) -- (P3);
+      \draw[very thick] (P3) -- (P4);
+      % 長さ \Delta l のラベル
+      \node at (\ang:1.8) [above right] {$\Delta l$};
+      % 質点の描画と質量 \Delta m のラベル
+      \fill (P1) circle (3pt);
+      \fill (P2) circle (3pt) node[below left] {$\Delta m$};
+      \fill (P3) circle (3pt);
+      \fill (P4) circle (3pt);
+      % 全長 l の寸法線
+      \draw[thin] (O) -- +(30:1.0);
+      \draw[thin] (P4) -- +(30:1.0);
+      \draw[<->, thick] (30:0.8) -- ++(\ang:4.2) node[midway, above right] {$l$};
+    \end{tikzpicture}
     \end{column}
   \end{columns}
 \end{frame}
@@ -99,7 +105,7 @@
   \begin{enumerate}
     \item 運動エネルギーとポテンシャルからラグランジアン $L$ を構成．
     \item ラグランジュ方程式から初角加速度 $\alpha_j$ に関する連立方程式を導出．
-    \item \textbf{$N \rightarrow \infty$ の極限}を取り，連続体としての挙動を解析．
+    \item $N \rightarrow \infty$ の極限を取り，連続体としての挙動を解析．
   \end{enumerate}
 \end{frame}
 
@@ -171,7 +177,6 @@
   \begin{equation}
     \left.\frac{\mathrm{d}}{\mathrm{d}t} \frac{\partial L}{\partial \dot{\varphi_k}}\right|_{t = 0}
     - \left.\frac{\partial L}{\partial \varphi_k}\right|_{t = 0} = 0
-    \quad \left(k = 1, 2, \dots, N\right)
   \end{equation}
   を計算する．
   \vspace{1em}
@@ -187,12 +192,12 @@
 \end{frame}
 
 \begin{frame}{結果：$N \rightarrow \infty$ の極限と積分方程式}
-  式(13)に対し，固定端からの長さを $s' = j \Delta l$ , $s = k \Delta l$ と対応させて $N \rightarrow \infty$ の極限を取る．
+  式(12)に対し，固定端からの長さを $s' = j \Delta l$ , $s = k \Delta l$ と対応させて $N \rightarrow \infty$ の極限を取る．
   \vspace{1em}
   
-  和が積分に置き換わり，初角加速度 $\alpha(s')$ に関する以下の\textbf{積分方程式}を得た：
+  和が積分に置き換わり，初角加速度 $\alpha(s')$ に関する以下の積分方程式を得た：
   \begin{equation}
-    \int_{0}^{l} \left(l - \max(s', s)\right) \alpha(s') \,ds' + g(l - s)\sin\theta = 0
+    \int_{0}^{l} \left(l - \max(s', s)\right) \alpha(s') \,\mathrm{d}s' + g(l - s)\sin\theta = 0
   \end{equation}
   積分区間を分割して整理すると：
   \begin{equation}
@@ -202,13 +207,13 @@
   \end{equation}
   両辺を $s$ について微分して整理すると：
   \begin{equation}
-    \int_{0}^{s} \alpha(s') \,ds' = -g \sin\theta
+    \int_{0}^{s} \alpha(s') \,\mathrm{d}s' = -g \sin\theta
   \end{equation}
 \end{frame}
 
 \begin{frame}{結果：解の導出とデルタ関数の出現}
   得られた積分方程式：
-  $$ \int_{0}^{s} \alpha(s') \,ds' = -g \sin\theta $$
+  $$ \int_{0}^{s} \alpha(s') \,\mathrm{d}s' = -g \sin\theta $$
   
   \vspace{1em}
   $s > 0$ において両辺を微分すると $\alpha(s) = 0$ となる．
@@ -247,8 +252,8 @@
 
   \textbf{今後の展望}
   \begin{itemize}
-    \item 現実の紐が持つ「太さ」や「曲げ剛性」を考慮に入れる．
-    \item $t$ の3次以上の項を無視した微小時間だけでなく，\textbf{有限な時間経過における落下挙動}（折れ曲がりの伝搬など）を解析する手法の構築．
+    \item 現実の紐が持つ「\textbf{太さ}」や「\textbf{曲げ剛性}」を考慮に入れる．
+    \item $t$ の3次以上の項を無視した微小時間だけでなく，有限な時間経過における落下挙動（折れ曲がりの伝搬など）を解析する手法の構築．
   \end{itemize}
 \end{frame}
 
