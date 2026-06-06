@@ -47,7 +47,7 @@
       \begin{itemize}
         \item 紐は\textbf{太さと曲げ剛性を持たない}．
         \item 長さ $l$ ，質量 $m$ の紐を $N$ 等分する．
-        \item 長さ $\Delta l = l / N$ の剛体棒と質量 $\Delta m = m / N$ の質点からなる$N$として定式化．
+        \item 長さ $\Delta l = l / N$ の剛体棒と質量 $\Delta m = m / N$ の質点からなる$N$重振り子として定式化．
         \item 初期状態：鉛直線と角度 $\theta$ をなす直線上で静止．
       \end{itemize}
     \end{column}
@@ -181,13 +181,12 @@
   を計算する．
   \vspace{1em}
 
-  (10)を代入して整理すると，$\alpha_j$に関する次の方程式が得られる：
+  (10)を代入して整理すると，$\alpha_j$に関する次の連立方程式が得られる：
   \begin{equation}
     \sum_{j = 1}^{N} \left(N \Delta l
     - \max \left(j \Delta l, k \Delta l\right) + \Delta l\right) \alpha_j
     \Delta l + g \left(N \Delta l - k \Delta l + \Delta l\right) \sin \theta = 0
   \end{equation}
-
   
 \end{frame}
 
@@ -212,7 +211,7 @@
 \end{frame}
 
 \begin{frame}{結果：解の導出とデルタ関数の出現}
-  得られた積分方程式：
+  得られた積分方程式（再掲）：
   $$ \int_{0}^{s} \alpha(s') \,\mathrm{d}s' = -g \sin\theta $$
   
   \vspace{1em}
@@ -221,13 +220,15 @@
 
   \vspace{1em}
   \textbf{最終的な初角加速度と角度：}
-  \begin{align*}
+  \begin{align}
     \alpha(s) &= -g \sin\theta \cdot \delta(s) \\
     \varphi(s) &= \theta - \frac{1}{2}gt^2 \sin\theta \cdot \delta(s)
-  \end{align*}
+  \end{align}
 \end{frame}
 
 \begin{frame}{考察}
+  得られた角度（再掲）：
+  $$\varphi(s) &= \theta - \frac{1}{2}gt^2 \sin\theta \cdot \delta(s)$$
   \textbf{自由端側の平行移動}
   \begin{itemize}
     \item $s > 0$ において $\varphi(s) = \theta$ 
@@ -246,7 +247,7 @@
   \textbf{結論}
   \begin{itemize}
     \item 紐は自由落下を開始した直後，固定端以外の部分は直線を保ったまま落下しようとする．
-    \item しかし固定端にはデルタ関数的な特異性が現れ，数学的結果と物理的現実との間に矛盾が生じた（現実には角度が無限大になることはない）．
+    \item 固定端にはデルタ関数的な特異性が現れ，数学的結果と物理的現実との間に矛盾が生じた（現実には角度が無限大になることはない）．
   \end{itemize}
   \vspace{1em}
 
