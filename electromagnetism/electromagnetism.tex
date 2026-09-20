@@ -29,7 +29,8 @@
 電場が順次伝わってもう1つの電荷に力を及ぼすためであると考える．このような場という考え方は，現代物理学では重要な概念になっている．
 
 \subsection{電磁場の定義}
-ある点において，速度 $\bm{v}$ の電荷 $q$ に力 $\bm{f}$ がはたらくとき，その点の電場 $\bm{E}$ と磁束密度 $\bm{B}$ を次式で定義する．
+ある点において，速度 $\bm{v}$ の電荷 $q$ に力 $\bm{f}$ がはたらくとき，
+その点の電場 $\bm{E}$ と磁場\footnote{高校の教科書では伝統的に $\bm{B}$ を磁束密度， $\bm{H}$ を磁場と表記するが，磁場を表す本質的な物理量は磁束密度 $\bm{B}$ である．そのため，本書では $\bm{B}$ を磁場と表記する．} $\bm{B}$ を次式で定義する．
 \begin{equation}
   \bm{f} = q \left( \bm{E} + \bm{v} \times \bm{B} \right)
 \end{equation}
@@ -38,25 +39,25 @@
 \section{電磁気学の基本原理}
 本章では，点における電磁場の振る舞いを記述するマクスウェル方程式から出発し，空間における法則を導出する．
 \subsection{マクスウェル方程式}
-空間における電場 $\bm{E}$ と磁束密度 $\bm{B}$ は，
+空間における電場 $\bm{E}$ と磁場 $\bm{B}$ は，
 電荷密度 $\rho$ および電流密度 $\bm{j}$ との間に以下の関係を満たす．
-ただし，$\varepsilon_0$ は真空の誘電率， $\mu_0$ は真空の透磁率， $t$ は時間である．
+ただし，$\epsilon_0$ は真空の誘電率， $\mu_0$ は真空の透磁率， $t$ は時間である．
 \begin{align}
-  \nabla \cdot \bm{E} &= \frac{\rho}{\varepsilon_0} \\
+  \nabla \cdot \bm{E} &= \frac{\rho}{\epsilon_0} \\
   \nabla \times \bm{E} &= -\frac{\partial \bm{B}}{\partial t} \\
   \nabla \cdot \bm{B} &= 0 \\
-  \nabla \times \bm{B} &= \mu_0 \bm{j} + \mu_0 \varepsilon_0 \frac{\partial \bm{E}}{\partial t}
+  \nabla \times \bm{B} &= \mu_0 \bm{j} + \mu_0 \epsilon_0 \frac{\partial \bm{E}}{\partial t}
 \end{align}
 これらの方程式は，電磁気学現象を考察するときの出発点にとる法則であり，マクスウェル方程式と呼ばれる．
 
 \subsection{電場に関するガウスの法則}
 閉曲面 $S$ で囲まれた領域 $V$ において，(2.1)の両辺を積分する．
 \begin{equation*}
-  \int_V \nabla \cdot \bm{E} \, \mathrm{d}V = \int_V \frac{\rho}{\varepsilon_0} \, \mathrm{d}V
+  \int_V \nabla \cdot \bm{E} \, \mathrm{d}V = \int_V \frac{\rho}{\epsilon_0} \, \mathrm{d}V
 \end{equation*}
 ガウスの定理を用いると，次式が得られる．
 \begin{equation}
-  \int_{S} \bm{E} \cdot \mathrm{d}\bm{S} = \frac{1}{\varepsilon_0} \int_{V} \rho \, \mathrm{d}V
+  \int_{S} \bm{E} \cdot \mathrm{d}\bm{S} = \frac{1}{\epsilon_0} \int_{V} \rho \, \mathrm{d}V
 \end{equation}
 したがって，閉曲面を通る電場のフラックスは，その面によって囲まれた領域内の全電荷を真空の誘電率で割ったものに等しい．これは，電場に関するガウスの法則と呼ばれる．
 
@@ -80,18 +81,18 @@
 \begin{equation}
   \int_{S} \bm{B} \cdot \mathrm{d}\bm{S} = 0
 \end{equation}
-したがって，閉曲面を通る磁束は，$0$に等しい．これは，磁場に関するガウスの法則と呼ばれる．
+したがって，閉曲面を通る磁場のフラックスは，$0$に等しい．これは，磁場に関するガウスの法則と呼ばれる．
 
 \subsection{マクスウェル・アンペールの法則}
 閉曲線 $C$ を縁とする曲面 $S$ において，(2.4)の両辺を積分する．
 \begin{equation*}
-  \int_S \left( \nabla \times \bm{B} \right) \cdot \mathrm{d}\bm{S} = \int_S \left( \mu_0 \bm{j} + \mu_0 \varepsilon_0 \frac{\partial \bm{E}}{\partial t} \right) \cdot \mathrm{d}\bm{S}
+  \int_S \left( \nabla \times \bm{B} \right) \cdot \mathrm{d}\bm{S} = \int_S \left( \mu_0 \bm{j} + \mu_0 \epsilon_0 \frac{\partial \bm{E}}{\partial t} \right) \cdot \mathrm{d}\bm{S}
 \end{equation*}
 ストークスの定理を用いると，次式が得られる．
 \begin{equation}
-  \oint_C \bm{B} \cdot \mathrm{d}\bm{s} = \mu_0 \left( \int_S \bm{j} \cdot \mathrm{d}\bm{S} + \varepsilon_0 \frac{\mathrm{d}}{\mathrm{d}t}\int_S \bm{E} \cdot \mathrm{d}\bm{S} \right)
+  \oint_C \bm{B} \cdot \mathrm{d}\bm{s} = \mu_0 \left( \int_S \bm{j} \cdot \mathrm{d}\bm{S} + \epsilon_0 \frac{\mathrm{d}}{\mathrm{d}t}\int_S \bm{E} \cdot \mathrm{d}\bm{S} \right)
 \end{equation}
-したがって，閉曲線のまわりの磁束密度の循環は，その閉曲線を縁とする面を通る伝導電流と変位電流の和に真空の透磁率を掛けたものに等しい．
+したがって，閉曲線のまわりの磁場の循環は，その閉曲線を縁とする面を通る伝導電流と変位電流の和に真空の透磁率を掛けたものに等しい．
 これは，マクスウェル・アンペールの法則と呼ばれる．
 
 \begin{thebibliography}{99}
