@@ -1,0 +1,114 @@
+\documentclass[11pt, a4paper]{ltjsarticle}
+\usepackage{amsmath, amssymb, amsthm, mathtools}
+\usepackage{bm}
+\usepackage{physics} 
+\usepackage{graphicx}
+\usepackage[unicode, hidelinks]{hyperref}
+\numberwithin{equation}{section}
+
+\title{演繹で学ぶ電磁気学}
+\author{黒瀬諭一朗 \thanks{埼玉県立大宮高等学校}}
+\date{\today}
+\begin{document}
+\maketitle
+
+\section*{はしがき}
+本書は，電磁気学の本質的な理解を目的として，高校レベルの初等的な電磁気学の基礎解説を演繹的に記述したものである．
+高校の電磁気学では，個々の現象や法則を歴史的な順序で学ぶ．
+しかし，物理学は単にいろいろな自然現象をあるがままに見て，個々の現象をばらばらに扱う学問ではない．
+いろいろな現象に共通する基本的な原理は何かを見出し，その原理をもとに，多くの現象を説明しようとする学問である．
+物理学者は，わずかの基本原理からすべての自然現象が説明できるはずだと信じている．
+
+\section{電磁気学の考え方}
+本章では場の概念を導入し，電場と磁場を定義する．
+\subsection{場とは何か}
+物体の相互作用は，場という概念を用いて記述できる．ある物体が他の物体に作用を及ぼしたという代わりに，
+物体がそれ自身の周りに場をつくりだし，場が順次伝わって，他の物体に力を及ぼしたと考えることができる．
+例えば，ある電荷が他の電荷に力を及ぼしたという代わりに，
+ある電荷が電場をつくりだし，電場が順次伝わって他の電荷に力を及ぼしたと考えることができる．
+
+クーロン力や重力について，ある物体の位置の変化の影響が他の物体に及ぶのは，有限の時間が経過した後であることが観測されている．
+このことは，場が実在することを意味している．
+
+\subsection{電磁場の定義}
+速度 $\bm{v}$ の電荷 $q$ に力 $\bm{f}$ がはたらくとき，その点の電場 $\bm{E}$ と磁束密度 $\bm{B}$ を次式で定義する．
+\begin{equation}
+  \bm{f} = q \left( \bm{E} + \bm{v} \times \bm{B} \right)
+\end{equation}
+この電場と磁場からはたらく力 $\bm{f}$ をローレンツ力と呼ぶ．
+
+\section{電磁気学の基本原理}
+本章では，点における電磁場の振る舞いを記述するマクスウェル方程式から出発し，空間における法則を導出する．
+\subsection{マクスウェル方程式}
+空間における電場 $\bm{E}$ と磁束密度 $\bm{B}$ は，
+電荷密度 $\rho$ および電流密度 $\bm{j}$ との間に以下の関係を満たす．
+ただし，$\varepsilon_0$ は真空の誘電率， $\mu_0$ は真空の透磁率， $t$ は時間である．
+\begin{align}
+  \nabla \cdot \bm{E} &= \frac{\rho}{\varepsilon_0} \\
+  \nabla \times \bm{E} &= -\frac{\partial \bm{B}}{\partial t} \\
+  \nabla \cdot \bm{B} &= 0 \\
+  \nabla \times \bm{B} &= \mu_0 \bm{j} + \mu_0 \varepsilon_0 \frac{\partial \bm{E}}{\partial t}
+\end{align}
+これらの方程式は，電磁気学現象を考察するときの出発点にとる法則であり，マクスウェル方程式と呼ばれる．
+
+\subsection{電場に関するガウスの法則}
+閉曲面 $S$ で囲まれた領域 $V$ において，(2.1)の両辺を積分する．
+\begin{equation*}
+  \int_V \nabla \cdot \bm{E} \, \mathrm{d}V = \int_V \frac{\rho}{\varepsilon_0} \, \mathrm{d}V
+\end{equation*}
+ガウスの定理を用いると，次式が得られる．
+\begin{equation}
+  \int_{S} \bm{E} \cdot \mathrm{d}\bm{S} = \frac{1}{\varepsilon_0} \int_{V} \rho \, \mathrm{d}V
+\end{equation}
+したがって，閉曲面を通る電場のフラックスは，その面によって囲まれた領域内の全電荷を真空の誘電率で割ったものに等しい．これは，電場に関するガウスの法則と呼ばれる．
+
+\subsection{ファラデーの電磁誘導の法則}
+閉曲線 $C$ を縁とする曲面 $S$ において，(2.2)の両辺を積分する．
+\begin{equation*}
+  \int_S \left( \nabla \times \bm{E} \right) \cdot \mathrm{d}\bm{S} = \int_S \left( -\frac{\partial \bm{B}}{\partial t} \right) \cdot \mathrm{d}\bm{S}
+\end{equation*}
+ストークスの定理を用いると，次式が得られる．
+\begin{equation}
+  \oint_C \bm{E} \cdot \mathrm{d}\bm{s} = -\frac{\partial}{\partial t} \int_S \bm{B} \cdot \mathrm{d}\bm{S}
+\end{equation}
+したがって，閉曲線のまわりの電場の循環は，その閉曲線を縁とする面を通る磁束の時間微分に$-1$を掛けたものに等しい．これは，ファラデーの電磁誘導の法則と呼ばれる．
+
+\subsection{磁場に関するガウスの法則}
+閉曲面 $S$ で囲まれた領域 $V$ において，(2.3)の両辺を積分する．
+\begin{equation*}
+  \int_V \nabla \cdot \bm{B} \, \mathrm{d}V = 0
+\end{equation*}
+ガウスの定理を用いると，次式が得られる．
+\begin{equation}
+  \int_{S} \bm{B} \cdot \mathrm{d}\bm{S} = 0
+\end{equation}
+したがって，閉曲面を通る磁束は，$0$に等しい．これは，磁場に関するガウスの法則と呼ばれる．
+
+\subsection{マクスウェル・アンペールの法則}
+閉曲線 $C$ を縁とする曲面 $S$ において，(2.4)の両辺を積分する．
+\begin{equation*}
+  \int_S \left( \nabla \times \bm{B} \right) \cdot \mathrm{d}\bm{S} = \int_S \left( \mu_0 \bm{j} + \mu_0 \varepsilon_0 \frac{\partial \bm{E}}{\partial t} \right) \cdot \mathrm{d}\bm{S}
+\end{equation*}
+ストークスの定理を用いると，次式が得られる．
+\begin{equation}
+  \oint_C \bm{B} \cdot \mathrm{d}\bm{s} = \mu_0 \int_S \bm{j} \cdot \mathrm{d}\bm{S} + \mu_0 \varepsilon_0 \frac{\partial}{\partial t} \int_S \bm{E} \cdot \mathrm{d}\bm{S}
+\end{equation}
+したがって，閉曲線のまわりの磁束密度の循環は，その閉曲線を縁とする面を通る伝導電流と変位電流の和に真空の透磁率を掛けたものに等しい．
+これは，マクスウェル・アンペールの法則と呼ばれる．
+
+\begin{thebibliography}{99}
+\bibitem{ref:book1} 
+  杉山忠男, 『理論物理への道標 上』, 河合出版, 1999.
+\bibitem{ref:book2}
+  杉山忠男, 『理論物理への道標 下』, 河合出版, 1999.
+\bibitem{ref:book3}
+  山本義隆, 『新・物理入門』, 駿台文庫, 1987.
+\bibitem{ref:book4}
+  エリ・デ・ランダウ, イェ・エム・リフシッツ, 『場の古典論』, 東京図書, 1978.
+\bibitem{ref:book5}
+  長岡洋介, 『電磁気学 Ⅰ 電場と磁場』, 岩波書店, 1982.
+\bibitem{ref:book6}
+  長岡洋介, 『電磁気学 Ⅱ 変動する電磁場』, 岩波書店, 1982.
+\end{thebibliography}
+
+\end{document}

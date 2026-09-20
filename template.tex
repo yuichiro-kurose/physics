@@ -1,0 +1,55 @@
+\documentclass[11pt, a4paper]{ltjsarticle}
+
+\usepackage{amsmath, amssymb, amsthm, mathtools}
+\usepackage{bm}
+\usepackage{physics} 
+\usepackage{graphicx}
+\usepackage[unicode, hidelinks]{hyperref}
+
+\title{ここに論文のタイトルを記述}
+\author{ここに著者名を記述 \\ ここに所属機関を記述}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+ここに概要を記述．
+\end{abstract}
+
+\section{はじめに}
+ここに背景を記述．
+引用する場合は、このように書く \cite{ref:paper1}．
+複数の文献を引用することも可能 \cite{ref:book1, ref:arxiv1}．
+
+\section{解析手法}
+ここに手法を記述．
+
+\section{結果}
+ここに結果を記述．
+
+\section{考察}
+ここに考察を記述．
+
+\section{結論}
+ここに結論を記述．
+
+\section*{謝辞}
+ここに謝辞を記述．
+
+\begin{thebibliography}{99}
+\bibitem{ref:paper1} 
+  著者名, ``論文タイトル,'' \textit{雑誌名}, \textbf{巻数}, ページ (発行年).
+
+\bibitem{ref:book1} 
+  著者名, 『書籍タイトル』, 出版社, 発行年.
+
+\bibitem{ref:arxiv1} 
+  著者名, ``タイトル,'' arXiv:xxxx.xxxxx [分野名].
+
+\bibitem{ref:web1} 
+  著者名（または運営機関名）, ``Web記事のタイトル,'' サイト名. \url{https://example.com} (閲覧日: 2026年4月26日).
+\end{thebibliography}
+
+\end{document}
