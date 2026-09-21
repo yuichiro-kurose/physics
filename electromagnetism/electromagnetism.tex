@@ -6,38 +6,36 @@
 \usepackage[unicode, hidelinks]{hyperref}
 \numberwithin{equation}{section}
 
-\title{演繹で学ぶ電磁気学}
+\title{演繹で学ぶ古典電磁気学}
 \author{黒瀬諭一朗 \thanks{埼玉県立大宮高等学校}}
 \date{\today}
 \begin{document}
 \maketitle
 
 \section*{はしがき}
-本書は，電磁気学の本質的な理解を目的として，高校レベルの初等的な電磁気学の基礎解説を演繹的に記述したものである．
+本書は，古典電磁気学の本質的な理解を目的として，高校レベルの電磁気学の基礎解説を演繹的に記述したものである．
 高校の電磁気学では，個々の現象や法則を歴史的な順序で学ぶ．
 しかし，物理学は単にいろいろな自然現象をあるがままに見て，個々の現象をばらばらに扱う学問ではない．
 いろいろな現象に共通する基本的な原理は何かを見出し，その原理をもとに，多くの現象を説明しようとする学問である．
-物理学者は，わずかの基本原理からすべての自然現象が説明できるはずだと信じている．
+物理学者は，わずかな基本原理からすべての自然現象が説明できるはずだと信じている．
 
 \section{電磁気学の考え方}
-本章では場の概念を導入し，電場と磁場を定義する．
 \subsection{場とは何か}
 物理学では，何らかの物理的性質を帯びた空間を場という．電気的性質を帯びた場を電場，磁気的性質を帯びた場を磁場という．
 数学的には，場は位置の関数であり，スカラーで表されるスカラー場，ベクトルで表されるベクトル場などがある．電場，磁場はベクトル場である．
 
-場という考え方は，近接作用論と密接に関係している．2つの電荷の間にクーロン力が働くのは，1つの電荷があるとその周りに電場が生じ，
+場という考え方は，近接作用論と密接に関係している．2つの電荷の間に力が働くのは，1つの電荷があるとその周りに電場が生じ，
 電場が順次伝わってもう1つの電荷に力を及ぼすためであると考える．このような場という考え方は，現代物理学では重要な概念になっている．
 
 \subsection{電磁場の定義}
 ある点において，速度 $\bm{v}$ の電荷 $q$ に力 $\bm{f}$ がはたらくとき，
-その点の電場 $\bm{E}$ と磁場\footnote{高校の教科書では伝統的に $\bm{B}$ を磁束密度， $\bm{H}$ を磁場と表記するが，磁場を表す本質的な物理量は磁束密度 $\bm{B}$ である．そのため，本書では $\bm{B}$ を磁場と表記する．} $\bm{B}$ を次式で定義する．
+その点の電場 $\bm{E}$ と磁場\footnote{高校の教科書では伝統的に $\bm{B}$ を磁束密度， $\bm{H}$ を磁場と表記するが，磁場を表す本質的な物理量は磁束密度 $\bm{B}$ である．そのため，本書では $\bm{B}$ を磁場と表記する．} $\bm{B}$ を
 \begin{equation}
   \bm{f} = q \left( \bm{E} + \bm{v} \times \bm{B} \right)
 \end{equation}
-この電場と磁場からはたらく力 $\bm{f}$ をローレンツ力と呼ぶ．
+で定義する．この電場と磁場からはたらく力 $\bm{f}$ をローレンツ力と呼ぶ．
 
 \section{電磁気学の基本原理}
-本章では，点における電磁場の振る舞いを記述するマクスウェル方程式から出発し，空間における法則を導出する．
 \subsection{マクスウェル方程式}
 空間における電場 $\bm{E}$ と磁場 $\bm{B}$ は，
 電荷密度 $\rho$ および電流密度 $\bm{j}$ との間に以下の関係を満たす．
@@ -49,51 +47,134 @@
   \nabla \times \bm{B} &= \mu_0 \bm{j} + \mu_0 \epsilon_0 \frac{\partial \bm{E}}{\partial t}
 \end{align}
 これらの方程式は，電磁気学現象を考察するときの出発点にとる法則であり，マクスウェル方程式と呼ばれる．
+そして，マクスウェル方程式がなぜ成り立つのかは問わない．
+マクスウェル方程式が妥当性を持つかどうかは，これを用いて電磁気学現象がどの程度説明できるかによって判断される．
+もし，マクスウェル方程式を用いて説明できない電磁気学現象が見出されたら，古典電磁気学とは異なる新たな電磁気学が作られる．
+
+マクスウェル方程式は点における電磁場の振る舞いを表している．
+そこで，マクスウェル方程式を積分すると，電磁場の空間的な振る舞いを導くことができる．
+電磁場の空間的な振る舞いを表す法則として，
+電場に関するガウスの法則，ファラデーの電磁誘導の法則，磁場に関するガウスの法則，マクスウェル・アンペールの法則
+の4つがある．
 
 \subsection{電場に関するガウスの法則}
 閉曲面 $S$ で囲まれた領域 $V$ において，(2.1)の両辺を積分する．
 \begin{equation*}
   \int_V \nabla \cdot \bm{E} \, \mathrm{d}V = \int_V \frac{\rho}{\epsilon_0} \, \mathrm{d}V
 \end{equation*}
-ガウスの定理を用いると，次式が得られる．
+ガウスの定理を用いると，
 \begin{equation}
   \int_{S} \bm{E} \cdot \mathrm{d}\bm{S} = \frac{1}{\epsilon_0} \int_{V} \rho \, \mathrm{d}V
 \end{equation}
-したがって，閉曲面を通る電場のフラックスは，その面によって囲まれた領域内の全電荷を真空の誘電率で割ったものに等しい．これは，電場に関するガウスの法則と呼ばれる．
+を得る．したがって，閉曲面を通る電場のフラックスは，その面によって囲まれた領域内の全電荷を真空の誘電率で割ったものに等しい．
+これは，電場に関するガウスの法則と呼ばれる．
 
 \subsection{ファラデーの電磁誘導の法則}
 閉曲線 $C$ を縁とする曲面 $S$ において，(2.2)の両辺を積分する．
 \begin{equation*}
   \int_S \left( \nabla \times \bm{E} \right) \cdot \mathrm{d}\bm{S} = \int_S \left( -\frac{\partial \bm{B}}{\partial t} \right) \cdot \mathrm{d}\bm{S}
 \end{equation*}
-ストークスの定理を用いると，次式が得られる．
+ストークスの定理を用いると，
 \begin{equation}
   \oint_C \bm{E} \cdot \mathrm{d}\bm{s} = - \frac{\mathrm{d}}{\mathrm{d}t} \int_S \bm{B} \cdot \mathrm{d}\bm{S}
 \end{equation}
-したがって，閉曲線のまわりの電場の循環は，その閉曲線を縁とする面を通る磁束の時間微分に$-1$を掛けたものに等しい．これは，ファラデーの電磁誘導の法則と呼ばれる．
+を得る．したがって，閉曲線のまわりの電場の循環は，その閉曲線を縁とする面を通る磁束の時間微分に$-1$を掛けたものに等しい．
+これは，ファラデーの電磁誘導の法則と呼ばれる．
 
 \subsection{磁場に関するガウスの法則}
 閉曲面 $S$ で囲まれた領域 $V$ において，(2.3)の両辺を積分する．
 \begin{equation*}
   \int_V \nabla \cdot \bm{B} \, \mathrm{d}V = 0
 \end{equation*}
-ガウスの定理を用いると，次式が得られる．
+ガウスの定理を用いると，
 \begin{equation}
   \int_{S} \bm{B} \cdot \mathrm{d}\bm{S} = 0
 \end{equation}
-したがって，閉曲面を通る磁場のフラックスは，$0$に等しい．これは，磁場に関するガウスの法則と呼ばれる．
+を得る．したがって，閉曲面を通る磁場のフラックスは，$0$に等しい．これは，磁場に関するガウスの法則と呼ばれる．
 
 \subsection{マクスウェル・アンペールの法則}
 閉曲線 $C$ を縁とする曲面 $S$ において，(2.4)の両辺を積分する．
 \begin{equation*}
   \int_S \left( \nabla \times \bm{B} \right) \cdot \mathrm{d}\bm{S} = \int_S \left( \mu_0 \bm{j} + \mu_0 \epsilon_0 \frac{\partial \bm{E}}{\partial t} \right) \cdot \mathrm{d}\bm{S}
 \end{equation*}
-ストークスの定理を用いると，次式が得られる．
+ストークスの定理を用いると，
 \begin{equation}
   \oint_C \bm{B} \cdot \mathrm{d}\bm{s} = \mu_0 \left( \int_S \bm{j} \cdot \mathrm{d}\bm{S} + \epsilon_0 \frac{\mathrm{d}}{\mathrm{d}t}\int_S \bm{E} \cdot \mathrm{d}\bm{S} \right)
 \end{equation}
-したがって，閉曲線のまわりの磁場の循環は，その閉曲線を縁とする面を通る伝導電流と変位電流の和に真空の透磁率を掛けたものに等しい．
+を得る．したがって，閉曲線のまわりの磁場の循環は，その閉曲線を縁とする面を通る伝導電流と変位電流の和に真空の透磁率を掛けたものに等しい．
 これは，マクスウェル・アンペールの法則と呼ばれる．
+
+\section{静電場}
+\subsection{クーロンの法則}
+原点に静止している点電荷 $Q$ が点 $\bm{r}$ に作る電場 $\bm{E} \left( \bm{r} \right)$ を求める．空間の球対称性より，
+\begin{equation*}
+  \bm{E} \left( \bm{r} \right) = E \left( r \right) \frac{\bm{r}}{r}
+\end{equation*}
+と表すことができる．原点を中心とする半径 $r$ の球面 $S$ に，電場に関するガウスの法則(2.5)を用いて，
+\begin{equation*}
+  \int_S E \left( r \right) \frac{\bm{r}}{r} \cdot \mathrm{d}\bm{S} = \frac{Q}{\epsilon_0}.
+\end{equation*}
+積分を実行して整理すると，
+\begin{equation*}
+  E \left( r \right) = \frac{1}{4\pi\epsilon_0} \frac{Q}{r^{2}}.
+\end{equation*}
+よって，$\bm{E}(\bm{r})$ は次の形に書ける．
+\begin{equation}
+  \bm{E} \left( \bm{r} \right) = \frac{Q}{4\pi\epsilon_0} \frac{\bm{r}}{r^{3}}.
+\end{equation}
+したがって，この電場の中の点 $\bm{r}$ に電荷 $q$ を静止させるとき，電荷が受けるローレンツ力 $\bm{f}$ は，
+\begin{equation}
+  \bm{f} = \frac{Qq}{4\pi\epsilon_0} \frac{\bm{r}}{r^{3}}
+\end{equation}
+となる．これは，クーロンの法則と呼ばれる．
+\subsection{電位}
+\subsubsection{電位の定義}
+\subsubsection{一様な電場による電位}
+\subsubsection{点電荷による電位}
+
+\section{導体と誘電体}
+\subsection{導体}
+\subsubsection{静電誘導}
+\subsubsection{導体の性質}
+\subsection{コンデンサー}
+\subsubsection{静電エネルギー}
+\subsection{平行板コンデンサー}
+\subsubsection{電気容量}
+\subsubsection{極板間の引力}
+\subsection{誘電体}
+\subsubsection{誘電分極}
+\subsubsection{誘電体内の電場}
+\subsubsection{誘電体が挿入されたコンデンサー}
+
+\section{定常電流}
+\subsection{電気量保存の法則}
+\subsection{オームの法則}
+\subsection{直流回路}
+\subsubsection{キルヒホッフの法則}
+\subsubsection{抵抗の接続}
+\paragraph{直列接続}
+\paragraph{並列接続}
+\subsubsection{コンデンサーの接続}
+\paragraph{直列接続}
+\paragraph{並列接続}
+\subsubsection{コンデンサーの充電}
+\subsubsection{エネルギー保存則}
+
+\section{静磁場}
+\subsection{アンペールの法則}
+\subsection{ビオ・サヴァールの法則}
+\subsection{直線電流の周囲の磁場}
+\subsection{円形電流の中心の磁場}
+\subsection{ソレノイドの内部の磁場}
+\subsection{電流が磁場から受ける力}
+
+\section{電磁誘導}
+\subsection{自己誘導}
+\subsection{相互誘導}
+
+\section{交流理論}
+
+\section{電磁波}
 
 \begin{thebibliography}{99}
 \bibitem{ref:book1} 
