@@ -12,7 +12,7 @@
 \begin{document}
 \maketitle
 
-\section*{はしがき}
+\section*{はじめに}
 本書は，古典電磁気学の本質的な理解を目的として，高校レベルの電磁気学の基礎解説を演繹的に記述したものである．
 高校の電磁気学では，個々の現象や法則を歴史的な順序で学ぶ．
 しかし，物理学は単にいろいろな自然現象をあるがままに見て，個々の現象をばらばらに扱う学問ではない．
@@ -33,7 +33,7 @@
 \begin{equation}
   \bm{f} = q \left( \bm{E} + \bm{v} \times \bm{B} \right)
 \end{equation}
-で定義する．この電場と磁場からはたらく力 $\bm{f}$ をローレンツ力と呼ぶ．
+で定義する．この電場と磁場からはたらく力 $\bm{f}$ はローレンツ力と呼ばれる．
 
 \section{電磁気学の基本原理}
 \subsection{マクスウェル方程式}
@@ -59,9 +59,9 @@
 
 \subsection{電場に関するガウスの法則}
 閉曲面 $S$ で囲まれた領域 $V$ において，(2.1)の両辺を積分する．
-\begin{equation*}
+\[
   \int_V \nabla \cdot \bm{E} \, \mathrm{d}V = \int_V \frac{\rho}{\epsilon_0} \, \mathrm{d}V
-\end{equation*}
+\]
 ガウスの定理を用いると，
 \begin{equation}
   \int_{S} \bm{E} \cdot \mathrm{d}\bm{S} = \frac{1}{\epsilon_0} \int_{V} \rho \, \mathrm{d}V
@@ -71,9 +71,9 @@
 
 \subsection{ファラデーの電磁誘導の法則}
 閉曲線 $C$ を縁とする曲面 $S$ において，(2.2)の両辺を積分する．
-\begin{equation*}
+\[
   \int_S \left( \nabla \times \bm{E} \right) \cdot \mathrm{d}\bm{S} = \int_S \left( -\frac{\partial \bm{B}}{\partial t} \right) \cdot \mathrm{d}\bm{S}
-\end{equation*}
+\]
 ストークスの定理を用いると，
 \begin{equation}
   \oint_C \bm{E} \cdot \mathrm{d}\bm{s} = - \frac{\mathrm{d}}{\mathrm{d}t} \int_S \bm{B} \cdot \mathrm{d}\bm{S}
@@ -83,9 +83,9 @@
 
 \subsection{磁場に関するガウスの法則}
 閉曲面 $S$ で囲まれた領域 $V$ において，(2.3)の両辺を積分する．
-\begin{equation*}
+\[
   \int_V \nabla \cdot \bm{B} \, \mathrm{d}V = 0
-\end{equation*}
+\]
 ガウスの定理を用いると，
 \begin{equation}
   \int_{S} \bm{B} \cdot \mathrm{d}\bm{S} = 0
@@ -94,9 +94,9 @@
 
 \subsection{マクスウェル・アンペールの法則}
 閉曲線 $C$ を縁とする曲面 $S$ において，(2.4)の両辺を積分する．
-\begin{equation*}
+\[
   \int_S \left( \nabla \times \bm{B} \right) \cdot \mathrm{d}\bm{S} = \int_S \left( \mu_0 \bm{j} + \mu_0 \epsilon_0 \frac{\partial \bm{E}}{\partial t} \right) \cdot \mathrm{d}\bm{S}
-\end{equation*}
+\]
 ストークスの定理を用いると，
 \begin{equation}
   \oint_C \bm{B} \cdot \mathrm{d}\bm{s} = \mu_0 \left( \int_S \bm{j} \cdot \mathrm{d}\bm{S} + \epsilon_0 \frac{\mathrm{d}}{\mathrm{d}t}\int_S \bm{E} \cdot \mathrm{d}\bm{S} \right)
@@ -107,28 +107,50 @@
 \section{静電場}
 \subsection{クーロンの法則}
 原点に静止している点電荷 $Q$ が点 $\bm{r}$ に作る電場 $\bm{E} \left( \bm{r} \right)$ を求める．空間の球対称性より，
-\begin{equation*}
+\[
   \bm{E} \left( \bm{r} \right) = E \left( r \right) \frac{\bm{r}}{r}
-\end{equation*}
+\]
 と表すことができる．原点を中心とする半径 $r$ の球面 $S$ に，電場に関するガウスの法則(2.5)を用いて，
-\begin{equation*}
+\[
   \int_S E \left( r \right) \frac{\bm{r}}{r} \cdot \mathrm{d}\bm{S} = \frac{Q}{\epsilon_0}.
-\end{equation*}
+\]
 積分を実行して整理すると，
-\begin{equation*}
+\[
   E \left( r \right) = \frac{1}{4\pi\epsilon_0} \frac{Q}{r^{2}}.
-\end{equation*}
+\]
 よって，$\bm{E}(\bm{r})$ は次の形に書ける．
 \begin{equation}
   \bm{E} \left( \bm{r} \right) = \frac{Q}{4\pi\epsilon_0} \frac{\bm{r}}{r^{3}}.
 \end{equation}
-したがって，この電場の中の点 $\bm{r}$ に電荷 $q$ を静止させるとき，電荷が受けるローレンツ力 $\bm{f}$ は，
+
+この電場の中の点 $\bm{r}$ に電荷 $q$ を静止させるとき，電荷が受ける力 $\bm{f}$ は，(1.1)より，
 \begin{equation}
   \bm{f} = \frac{Qq}{4\pi\epsilon_0} \frac{\bm{r}}{r^{3}}
 \end{equation}
-となる．これは，クーロンの法則と呼ばれる．
+となる．これはクーロンの法則と呼ばれ，この静電場からはたらく力 $\bm{f}$ はクーロン力と呼ばれる．
 \subsection{電位}
 \subsubsection{電位の定義}
+静電場においては，磁場が時間的に変化しない．
+したがって，ファラデーの電磁誘導の法則(2.6)より，任意の閉曲線 $C$ において，
+\[
+  \oint_C \bm{E} \cdot \mathrm{d}\bm{s} = 0
+\]
+が成り立つ．よって，クーロン力 $\bm{f} = q\bm{E}$ は，
+\[
+  \oint_C \bm{f} \cdot \mathrm{d}\bm{s} = 0
+\]
+を満たす．これは，静電場においてクーロン力が電荷にする仕事が経路によらないことを意味する．すなわち，クーロン力は保存力である．
+
+クーロン力が保存力であることから，電荷を動かす間にクーロン力のする仕事は，終点 $\bm{r}_0$ を固定すると，始点 $\bm{r}$ だけで決まる．よって，
+\[
+  U \left( \bm{r} \right) = \int_{\bm{r}}^{\bm{r}_0} \bm{f} \cdot \mathrm{d}\bm{r}
+\]
+という関数 $U \left( \bm{r} \right)$ が定義できる．この関数 $U \left( \bm{r} \right)$ を，クーロン力に対する $\bm{r}_0$ を基準点とする位置エネルギーという．
+そこで，電位 $\phi \left( \bm{r} \right)$ を単位電荷あたりの位置エネルギー
+\begin{equation}
+  \phi \left( \bm{r} \right) = \int_{\bm{r}}^{\bm{r}_0} \bm{E} \cdot \mathrm{d}\bm{r}
+\end{equation}
+で定義する．
 \subsubsection{一様な電場による電位}
 \subsubsection{点電荷による電位}
 
