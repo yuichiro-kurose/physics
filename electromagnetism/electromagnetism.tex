@@ -110,18 +110,19 @@
 \[
   \bm{E} \left( \bm{r} \right) = E \left( r \right) \frac{\bm{r}}{r}
 \]
-と表すことができる．原点を中心とする半径 $r$ の球面 $S$ に，電場に関するガウスの法則(2.5)を用いて，
+と表すことができる．原点を中心とする半径 $r$ の球面 $S$ に，電場に関するガウスの法則(2.5)を用いると，
 \[
-  \int_S E \left( r \right) \frac{\bm{r}}{r} \cdot \mathrm{d}\bm{S} = \frac{Q}{\epsilon_0}.
+  \int_S E \left( r \right) \frac{\bm{r}}{r} \cdot \mathrm{d}\bm{S} = \frac{Q}{\epsilon_0}
 \]
-積分を実行して整理すると，
+となる．積分を実行して整理すると，
 \[
-  E \left( r \right) = \frac{1}{4\pi\epsilon_0} \frac{Q}{r^{2}}.
+  E \left( r \right) = \frac{1}{4\pi\epsilon_0} \frac{Q}{r^{2}}
 \]
-よって，$\bm{E}(\bm{r})$ は次の形に書ける．
+を得る．よって，$\bm{E}(\bm{r})$ は，
 \begin{equation}
-  \bm{E} \left( \bm{r} \right) = \frac{Q}{4\pi\epsilon_0} \frac{\bm{r}}{r^{3}}.
+  \bm{E} \left( \bm{r} \right) = \frac{Q}{4\pi\epsilon_0} \frac{\bm{r}}{r^{3}}
 \end{equation}
+と表すことができる．
 
 この電場の中の点 $\bm{r}$ に電荷 $q$ を静止させるとき，電荷が受ける力 $\bm{f}$ は，(1.1)より，
 \begin{equation}
@@ -151,8 +152,44 @@
   \phi \left( \bm{r} \right) = \int_{\bm{r}}^{\bm{r}_0} \bm{E} \cdot \mathrm{d}\bm{r}
 \end{equation}
 で定義する．
-\subsubsection{一様な電場による電位}
 \subsubsection{点電荷による電位}
+原点に静止している点電荷 $Q$ による点 $\bm{r}$ の電位 $\phi \left( \bm{r} \right)$ を求める．
+点 $\bm{r}$ における電場は(3.1)で与えられるため，電位の基準点を $\bm{r}_0$ とすると，
+\[
+  \phi \left( \bm{r} \right) = \int_{\bm{r}}^{\bm{r}_0} \frac{Q}{4 \pi \epsilon_0} \frac{\bm{r}}{r^{3}}  \cdot \mathrm{d}\bm{r}
+\]
+となる．積分を実行して整理すると，
+\[
+  \phi \left( \bm{r} \right) = \frac{Q}{4 \pi \epsilon_0} \left( \frac{1}{r} - \frac{1}{r_0} \right)
+\]
+を得る．電位の基準点 $\bm{r}_0$ を無限遠にとると，点電荷 $Q$ による電位は，
+\begin{equation}
+  \phi \left( \bm{r} \right) = \frac{1}{4 \pi \epsilon_0} \frac{Q}{r}
+\end{equation}
+となる．
+\subsubsection{電荷のエネルギー保存則}
+時刻 $t = t_1$ において，点 $\bm{r}_1$ で速度 $\bm{v}_1$ を持っていた質量 $m$，電気量 $q$ の電荷にクーロン力 $\bm{f} = q\bm{E}$ がはたらいて，時刻 $t = t_2$ において，点 $\bm{r}_2$ で速度 $\bm{v}_2$ になったとする．この間，電荷の運動方程式は，
+\[
+  m \frac{\mathrm{d}\bm{v}}{\mathrm{d}{t}} = q\bm{E}
+\]
+である．両辺に速度 $\bm{v}$ の内積をつくり，時間 $t$ に関して $t = t_1$ から $t = t_2$ まで積分すると，
+\[
+  \int_{t_1}^{t_2} m\bm{v} \cdot \frac{\mathrm{d}\bm{v}}{\mathrm{d}t} \, \mathrm{d}t = \int_{t_1}^{t_2} q\bm{E} \cdot \frac{\mathrm{d}\bm{r}}{\mathrm{d}t} \, \mathrm{d}t
+\]
+つまり，
+\[
+  \int_{\bm{v}_1}^{\bm{v}_2} m\bm{v} \cdot \mathrm{d}\bm{v} = \int_{\bm{r}_1}^{\bm{r}_2} q\bm{E} \cdot \mathrm{d}\bm{r}
+\]
+となる．各辺は，
+\begin{align*}
+  \int_{\bm{v}_1}^{\bm{v}_2} m\bm{v} \cdot \mathrm{d}\bm{v} &= \frac{1}{2} m v_2^{2} - \frac{1}{2} m v_1^{2}, \\
+  \int_{\bm{r}_1}^{\bm{r}_2} q\bm{E} \cdot \mathrm{d}\bm{r} &= q\phi \left( \bm{r}_1 \right) - q \phi \left(\bm{r}_2 \right)
+\end{align*}
+と計算できる．これにより，
+\begin{equation}
+  \frac{1}{2} m v_1^{2} + q\phi \left( \bm{r}_1 \right) = \frac{1}{2} m v_2^{2} + q\phi \left( \bm{r}_2 \right)
+\end{equation}
+を得る．したがって，力学的エネルギーは保存する．\footnote{空間に磁場 $\bm{B}$ が存在し，電荷がローレンツ力 $\bm{f} = q(\bm{E} + \bm{v} \times \bm{B})$ を受けていたとしても，速度 $\bm{v}$ との内積をとると，$\bm{v} \cdot \left( \bm{v} \times \bm{B} \right) = 0$ より， $\bm{f} \cdot \bm{v} = q\bm{E} \cdot \bm{v}$ となる．すなわち，磁場の存在はエネルギー保存則に影響を与えない．}
 
 \section{導体と誘電体}
 \subsection{導体}
@@ -199,17 +236,19 @@
 \section{電磁波}
 
 \begin{thebibliography}{99}
-\bibitem{ref:book1} 
+\bibitem{ref:book1}
+  國友正和, 『物理』, 数研出版, 2026.
+\bibitem{ref:book2} 
   杉山忠男, 『理論物理への道標 上』, 河合出版, 1999.
-\bibitem{ref:book2}
-  杉山忠男, 『理論物理への道標 下』, 河合出版, 1999.
 \bibitem{ref:book3}
-  山本義隆, 『新・物理入門』, 駿台文庫, 1987.
+  杉山忠男, 『理論物理への道標 下』, 河合出版, 1999.
 \bibitem{ref:book4}
-  エリ・デ・ランダウ, イェ・エム・リフシッツ, 『場の古典論』, 東京図書, 1978.
+  山本義隆, 『新・物理入門』, 駿台文庫, 1987.
 \bibitem{ref:book5}
-  長岡洋介, 『電磁気学 Ⅰ 電場と磁場』, 岩波書店, 1982.
+  エリ・デ・ランダウ, イェ・エム・リフシッツ, 『場の古典論』, 東京図書, 1978.
 \bibitem{ref:book6}
+  長岡洋介, 『電磁気学 Ⅰ 電場と磁場』, 岩波書店, 1982.
+\bibitem{ref:book7}
   長岡洋介, 『電磁気学 Ⅱ 変動する電磁場』, 岩波書店, 1982.
 \end{thebibliography}
 
