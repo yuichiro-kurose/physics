@@ -6,14 +6,14 @@
 \usepackage[unicode, hidelinks]{hyperref}
 \numberwithin{equation}{section}
 
-\title{演繹で学ぶ古典電磁気学}
+\title{体系古典電磁気学}
 \author{黒瀬諭一朗 \thanks{埼玉県立大宮高等学校}}
 \date{\today}
 \begin{document}
 \maketitle
 
 \section*{はじめに}
-本書は，古典電磁気学の本質的な理解を目的として，高校レベルの電磁気学の基礎解説を演繹的に記述したものである．
+本書は，古典電磁気学の本質的な理解を目的として，高校で学ぶ電磁場の性質を体系的に記述したものである．
 高校の電磁気学では，個々の現象や法則を歴史的な順序で学ぶ．
 しかし，物理学は単にいろいろな自然現象をあるがままに見て，個々の現象をばらばらに扱う学問ではない．
 いろいろな現象に共通する基本的な原理は何かを見出し，その原理をもとに，多くの現象を説明しようとする学問である．
@@ -58,11 +58,11 @@
 の4つがある．
 
 \subsection{電場に関するガウスの法則}
-閉曲面 $S$ で囲まれた領域 $V$ において，(2.1)の両辺を積分する．
+閉曲面 $S$ で囲まれた領域 $V$ において，(2.1)の両辺を積分すると，
 \[
   \int_V \nabla \cdot \bm{E} \, \mathrm{d}V = \int_V \frac{\rho}{\epsilon_0} \, \mathrm{d}V
 \]
-ガウスの定理を用いると，
+となる．ガウスの定理を用いると，
 \begin{equation}
   \int_{S} \bm{E} \cdot \mathrm{d}\bm{S} = \frac{1}{\epsilon_0} \int_{V} \rho \, \mathrm{d}V
 \end{equation}
@@ -70,11 +70,11 @@
 これは，電場に関するガウスの法則と呼ばれる．
 
 \subsection{ファラデーの電磁誘導の法則}
-閉曲線 $C$ を縁とする曲面 $S$ において，(2.2)の両辺を積分する．
+閉曲線 $C$ を縁とする曲面 $S$ において，(2.2)の両辺を積分すると，
 \[
   \int_S \left( \nabla \times \bm{E} \right) \cdot \mathrm{d}\bm{S} = \int_S \left( -\frac{\partial \bm{B}}{\partial t} \right) \cdot \mathrm{d}\bm{S}
 \]
-ストークスの定理を用いると，
+となる．ストークスの定理を用いると，
 \begin{equation}
   \oint_C \bm{E} \cdot \mathrm{d}\bm{s} = - \frac{\mathrm{d}}{\mathrm{d}t} \int_S \bm{B} \cdot \mathrm{d}\bm{S}
 \end{equation}
@@ -82,22 +82,22 @@
 これは，ファラデーの電磁誘導の法則と呼ばれる．
 
 \subsection{磁場に関するガウスの法則}
-閉曲面 $S$ で囲まれた領域 $V$ において，(2.3)の両辺を積分する．
+閉曲面 $S$ で囲まれた領域 $V$ において，(2.3)の両辺を積分すると，
 \[
   \int_V \nabla \cdot \bm{B} \, \mathrm{d}V = 0
 \]
-ガウスの定理を用いると，
+となる．ガウスの定理を用いると，
 \begin{equation}
   \int_{S} \bm{B} \cdot \mathrm{d}\bm{S} = 0
 \end{equation}
-を得る．したがって，閉曲面を通る磁場のフラックスは，$0$に等しい．これは，磁場に関するガウスの法則と呼ばれる．
+を得る．したがって，閉曲面を通る磁束は，$0$に等しい．これは，磁場に関するガウスの法則と呼ばれる．
 
 \subsection{マクスウェル・アンペールの法則}
-閉曲線 $C$ を縁とする曲面 $S$ において，(2.4)の両辺を積分する．
+閉曲線 $C$ を縁とする曲面 $S$ において，(2.4)の両辺を積分すると，
 \[
   \int_S \left( \nabla \times \bm{B} \right) \cdot \mathrm{d}\bm{S} = \int_S \left( \mu_0 \bm{j} + \mu_0 \epsilon_0 \frac{\partial \bm{E}}{\partial t} \right) \cdot \mathrm{d}\bm{S}
 \]
-ストークスの定理を用いると，
+となる．ストークスの定理を用いると，
 \begin{equation}
   \oint_C \bm{B} \cdot \mathrm{d}\bm{s} = \mu_0 \left( \int_S \bm{j} \cdot \mathrm{d}\bm{S} + \epsilon_0 \frac{\mathrm{d}}{\mathrm{d}t}\int_S \bm{E} \cdot \mathrm{d}\bm{S} \right)
 \end{equation}
@@ -129,6 +129,7 @@
   \bm{f} = \frac{Qq}{4\pi\epsilon_0} \frac{\bm{r}}{r^{3}}
 \end{equation}
 となる．これはクーロンの法則と呼ばれ，この静電場からはたらく力 $\bm{f}$ はクーロン力と呼ばれる．
+
 \subsection{電位}
 \subsubsection{電位の定義}
 静電場においては，磁場が時間的に変化しない．
@@ -152,6 +153,7 @@
   \phi \left( \bm{r} \right) = \int_{\bm{r}}^{\bm{r}_0} \bm{E} \cdot \mathrm{d}\bm{r}
 \end{equation}
 で定義する．
+
 \subsubsection{点電荷による電位}
 原点に静止している点電荷 $Q$ による点 $\bm{r}$ の電位 $\phi \left( \bm{r} \right)$ を求める．
 点 $\bm{r}$ における電場は(3.1)で与えられるため，電位の基準点を $\bm{r}_0$ とすると，
@@ -167,6 +169,7 @@
   \phi \left( \bm{r} \right) = \frac{1}{4 \pi \epsilon_0} \frac{Q}{r}
 \end{equation}
 となる．
+
 \subsubsection{電荷のエネルギー保存則}
 時刻 $t = t_1$ において，点 $\bm{r}_1$ で速度 $\bm{v}_1$ を持っていた質量 $m$，電気量 $q$ の電荷にクーロン力 $\bm{f} = q\bm{E}$ がはたらいて，時刻 $t = t_2$ において，点 $\bm{r}_2$ で速度 $\bm{v}_2$ になったとする．この間，電荷の運動方程式は，
 \[
@@ -180,58 +183,60 @@
 \[
   \int_{\bm{v}_1}^{\bm{v}_2} m\bm{v} \cdot \mathrm{d}\bm{v} = \int_{\bm{r}_1}^{\bm{r}_2} q\bm{E} \cdot \mathrm{d}\bm{r}
 \]
-となる．各辺は，
-\begin{align*}
-  \int_{\bm{v}_1}^{\bm{v}_2} m\bm{v} \cdot \mathrm{d}\bm{v} &= \frac{1}{2} m v_2^{2} - \frac{1}{2} m v_1^{2}, \\
-  \int_{\bm{r}_1}^{\bm{r}_2} q\bm{E} \cdot \mathrm{d}\bm{r} &= q\phi \left( \bm{r}_1 \right) - q \phi \left(\bm{r}_2 \right)
-\end{align*}
-と計算できる．これにより，
+となる．積分を実行して整理すると，
 \begin{equation}
   \frac{1}{2} m v_1^{2} + q\phi \left( \bm{r}_1 \right) = \frac{1}{2} m v_2^{2} + q\phi \left( \bm{r}_2 \right)
 \end{equation}
 を得る．したがって，力学的エネルギーは保存する．\footnote{空間に磁場 $\bm{B}$ が存在し，電荷がローレンツ力 $\bm{f} = q(\bm{E} + \bm{v} \times \bm{B})$ を受けていたとしても，速度 $\bm{v}$ との内積をとると，$\bm{v} \cdot \left( \bm{v} \times \bm{B} \right) = 0$ より， $\bm{f} \cdot \bm{v} = q\bm{E} \cdot \bm{v}$ となる．すなわち，磁場の存在はエネルギー保存則に影響を与えない．}
 
-\section{導体と誘電体}
-\subsection{導体}
-\subsubsection{静電誘導}
-\subsubsection{導体の性質}
-\subsection{コンデンサー}
-\subsubsection{静電エネルギー}
-\subsection{平行板コンデンサー}
-\subsubsection{電気容量}
-\subsubsection{極板間の引力}
-\subsection{誘電体}
-\subsubsection{誘電分極}
-\subsubsection{誘電体内の電場}
-\subsubsection{誘電体が挿入されたコンデンサー}
+\section{電流}
+\subsection{電流の定義}
+ある点における電荷密度を $\rho$，電荷の速度を $\bm{v}$ とするとき，その点における電流密度 $\bm{j}$ を
+\begin{equation}
+  \bm{j} = \rho \bm{v}
+\end{equation}
+で定義する．
+また，曲面 $S$ を通過する電流 $I$ は、曲面 $S$ 上における電流密度 $\bm{j}$ の面積分として
+\begin{equation}
+  I = \int_S \bm{j} \cdot \mathrm{d}\bm{S}
+\end{equation}
+で定義する．
 
-\section{定常電流}
-\subsection{電気量保存の法則}
-\subsection{オームの法則}
-\subsection{直流回路}
-\subsubsection{キルヒホッフの法則}
-\subsubsection{抵抗の接続}
-\paragraph{直列接続}
-\paragraph{並列接続}
-\subsubsection{コンデンサーの接続}
-\paragraph{直列接続}
-\paragraph{並列接続}
-\subsubsection{コンデンサーの充電}
-\subsubsection{エネルギー保存則}
+\subsection{電荷保存則}
+(2.4)の両辺の発散をとると，
+\[
+  0 = \mu_0 \nabla \cdot \bm{j} + \mu_0 \epsilon_0 \frac{\partial}{\partial t} \left( \nabla \cdot \bm{E} \right)
+\]
+となる．(2.1)を代入して整理すると，
+\begin{equation}
+  \frac{\partial \rho}{\partial t} + \nabla \cdot \bm{j} = 0
+\end{equation}
+を得る．
+閉曲面 $S$ で囲まれた領域 $V$ において(4.3)の両辺を空間積分すると， 
+\[
+  \int_V \frac{\partial \rho}{\partial t} \, \mathrm{d}V + \int_V \nabla \cdot \bm{j} \, \mathrm{d}V = 0
+\]
+となる．第1項の微分と積分の順序を交換し，第2項にガウスの定理を用いると，
+\[
+  \frac{\mathrm{d}}{\mathrm{d} t} \int_V \rho \, \mathrm{d}V + \int_S \bm{j} \cdot \mathrm{d}\bm{S} = 0
+\]
+を得る．よって，領域 $V$ 内の全電荷を $Q$ とし，電流を $I$ とすると，
+\begin{equation}
+  \frac{\mathrm{d} Q}{\mathrm{d} t} = - I
+\end{equation}
+が成り立つ．したがって，領域内の全電荷の時間微分は，電流に $-1$ を掛けたものに等しい．
+これは，電荷保存則と呼ばれる．
 
 \section{静磁場}
-\subsection{アンペールの法則}
+\subsection{電流が磁場から受ける力}
 \subsection{ビオ・サヴァールの法則}
 \subsection{直線電流の周囲の磁場}
 \subsection{円形電流の中心の磁場}
 \subsection{ソレノイドの内部の磁場}
-\subsection{電流が磁場から受ける力}
 
 \section{電磁誘導}
 \subsection{自己誘導}
 \subsection{相互誘導}
-
-\section{交流理論}
 
 \section{電磁波}
 
