@@ -6,7 +6,7 @@
 \usepackage[unicode, hidelinks]{hyperref}
 \numberwithin{equation}{section}
 
-\title{体系古典電磁気学}
+\title{体系電磁気学}
 \author{黒瀬諭一朗 \thanks{埼玉県立大宮高等学校}}
 \date{\today}
 \begin{document}
@@ -29,7 +29,7 @@
 万有引力場が順次伝わってもう1つの物体に力を及ぼすためであると考える．このような場という考え方は，現代物理学では重要な概念になっている．
 
 \subsection{電磁場の定義}
-ある点において，速度 $\bm{v}$ の電荷 $q$ にはたらく力 $\bm{f}$ は，2つの場 $\bm{E}, \bm{B}$ を用いて
+ある点における，速度 $\bm{v}$ の電荷 $q$ にはたらく力 $\bm{f}$ は，2つの場 $\bm{E}$，$\bm{B}$ を用いて
 \begin{equation}
   \bm{f} = q \left( \bm{E} + \bm{v} \times \bm{B} \right)
 \end{equation}
@@ -37,9 +37,9 @@
 \footnote{高校の教科書では伝統的に $\bm{B}$ を磁束密度， $\bm{H}$ を磁場と表記するが，磁場を表す本質的な物理量は磁束密度 $\bm{B}$ である．
 そのため，本書では $\bm{B}$ を磁場と表記する．}
 と定義し，電荷は電場と磁場から力を受けると解釈する．
-この電場と磁場からはたらく力 $\bm{f}$ はローレンツ力と呼ばれる．
+この電磁場からはたらく力 $\bm{f}$ はローレンツ力と呼ばれる．
 
-\subsection{電荷密度，電流密度，電流の定義}
+\subsection{電荷密度と電流密度の定義}
 電荷密度 $\rho$ を，$\rho \, \mathrm{d}V$ が体積 $\mathrm{d}V$ のなかに含まれた電荷となるように定義する\footnote{電荷は実際には点状であり，空間に連続的に分布したものではないため，$\rho$ は点電荷が位置する点を除いては0である．}．
 このとき，ある領域 $V$ 内の全電荷 $Q$ は，電荷密度の領域 $V$ における積分
 \[
@@ -51,11 +51,7 @@
 \[
   \bm{j} = \rho \bm{v}
 \]
-で定義する．また，曲面 $S$ を通過する電流 $I$ は，電流密度の曲面 $S$ における積分として，
-\[
-  I = \int_S \bm{j} \cdot \mathrm{d}\bm{S}
-\]
-で定義する．ただし，$S$ が閉曲面のときは，$S$ の外へ出る向きを電流の正の向きとする．
+で定義する．
 
 \section{電磁気学の基本原理}
 \subsection{マクスウェル方程式}
@@ -69,7 +65,7 @@
   \nabla \times \bm{B} &= \mu_0 \bm{j} + \mu_0 \epsilon_0 \frac{\partial \bm{E}}{\partial t} 
 \end{align}
 これらの方程式は，電磁気学現象を考察するときの出発点にとる法則であり，マクスウェル方程式と呼ばれる．
-そして，マクスウェル方程式および(1.1)がなぜ成り立つのかは問わない．
+そして，マクスウェル方程式がなぜ成り立つのかは問わない．
 マクスウェル方程式が妥当性を持つかどうかは，これを用いて電磁気学現象がどの程度説明できるかによって判断される．
 
 マクスウェル方程式は点における電磁場の振る舞いを表している．
@@ -126,72 +122,47 @@
 これは，マクスウェル・アンペールの法則と呼ばれる．
 
 \section{静電場}
+\subsection{スカラー・ポテンシャル}
+任意のスカラー場 $\phi$ に対して $\nabla \times \left( \nabla \phi \right) = 0$ が成り立つことと(2.2)より，
+磁場が時間変化しないとき，電場 $\bm{E}$ はあるスカラー場 $\phi$ の勾配として，
+\begin{equation}
+  \bm{E} = - \nabla \phi
+\end{equation}
+と表すことができる．この $\phi$ は，スカラー・ポテンシャルと呼ばれる．
+
+(3.1)を(2.1)に代入すると，
+\begin{equation}
+  \nabla^{2} \phi = - \frac{\rho}{\epsilon_0}
+\end{equation}
+となる．この方程式はポアソン方程式と呼ばれる．この方程式の解は，
+\begin{equation}
+  \phi = \frac{1}{4 \pi \epsilon_0} \int_V \frac{\rho}{r} \, \mathrm{d}{V}
+\end{equation}
+と書ける．ここで，$r$ は $\phi$ を定めようとする点から体積要素 $\mathrm{d}V$ までの距離である．
+
 \subsection{クーロンの法則}
-原点に静止している点電荷 $Q$ が点 $\bm{r}$ に作る電場 $\bm{E} \left( \bm{r} \right)$ を求める．空間の球対称性より，
-\[
-  \bm{E} \left( \bm{r} \right) = E \left( r \right) \frac{\bm{r}}{r}
-\]
-と表すことができる．原点を中心とする半径 $r$ の球面 $S$ に，電場に関するガウスの法則(2.5)を用いると，
-\[
-  \int_S E \left( r \right) \frac{\bm{r}}{r} \cdot \mathrm{d}\bm{S} = \frac{Q}{\epsilon_0}
-\]
-となる．積分を実行して整理すると，
-\[
-  E \left( r \right) = \frac{1}{4\pi\epsilon_0} \frac{Q}{r^{2}}
-\]
-を得る．よって，$\bm{E}(\bm{r})$ は，
+原点に静止する点電荷 $Q$ がつくる電場 $\bm{E}$ を求める．
+この場のスカラー・ポテンシャル $\phi$ は，(3.3)より，
 \begin{equation}
-  \bm{E} \left( \bm{r} \right) = \frac{Q}{4\pi\epsilon_0} \frac{\bm{r}}{r^{3}}
+  \phi = \frac{1}{4 \pi \epsilon_0} \frac{Q}{r}
 \end{equation}
-と表すことができる．
-
-この電場の中の点 $\bm{r}$ に電荷 $q$ を静止させるとき，電荷が受ける力 $\bm{f}$ は，(1.1)より，
+となる．このとき，(3.1)より電場 $\bm{E}$ は，
+\[
+  \bm{E} = - \frac{Q}{4 \pi \epsilon_0} \nabla \left( \frac{1}{r} \right)
+\]
+つまり，
 \begin{equation}
-  \bm{f} = \frac{Qq}{4\pi\epsilon_0} \frac{\bm{r}}{r^{3}}
+  \bm{E} = \frac{Q}{4 \pi \epsilon_0} \frac{\bm{r}}{r^{3}}
 \end{equation}
-となる．これはクーロンの法則と呼ばれ，この静電場からはたらく力 $\bm{f}$ はクーロン力と呼ばれる．
+と表せる．
 
-\subsection{電位}
-\subsubsection{電位の定義}
-静電場においては，磁場が時間的に変化しない．
-したがって，ファラデーの電磁誘導の法則(2.6)より，任意の閉曲線 $C$ において，
-\[
-  \oint_C \bm{E} \cdot \mathrm{d}\bm{s} = 0
-\]
-が成り立つ．よって，クーロン力 $\bm{f} = q\bm{E}$ は，
-\[
-  \oint_C \bm{f} \cdot \mathrm{d}\bm{s} = 0
-\]
-を満たす．これは，静電場においてクーロン力が電荷にする仕事が経路によらないことを意味する．すなわち，クーロン力は保存力である．
-
-クーロン力が保存力であることから，電荷を動かす間にクーロン力のする仕事は，終点 $\bm{r}_0$ を固定すると，始点 $\bm{r}$ だけで決まる．よって，
-\[
-  U \left( \bm{r} \right) = \int_{\bm{r}}^{\bm{r}_0} \bm{f} \cdot \mathrm{d}\bm{r}
-\]
-という関数 $U \left( \bm{r} \right)$ が定義できる．この関数 $U \left( \bm{r} \right)$ を，クーロン力に対する $\bm{r}_0$ を基準点とする位置エネルギーという．
-そこで，電位 $\phi \left( \bm{r} \right)$ を単位電荷あたりの位置エネルギー
+この電場に電荷 $q$ を置くとき，電荷が受ける力 $\bm{f}$ は，(1.1)より，
 \begin{equation}
-  \phi \left( \bm{r} \right) = \int_{\bm{r}}^{\bm{r}_0} \bm{E} \cdot \mathrm{d}\bm{r}
+  \bm{f} = \frac{Qq}{4 \pi \epsilon_0} \frac{\bm{r}}{r^{3}}
 \end{equation}
-で定義する．
+と書ける．これはクーロンの法則と呼ばれ，この電場からはたらく力 $\bm{f}$ はクーロン力と呼ばれる．
 
-\subsubsection{点電荷による電位}
-原点に静止している点電荷 $Q$ による点 $\bm{r}$ の電位 $\phi \left( \bm{r} \right)$ を求める．
-点 $\bm{r}$ における電場は(3.1)で与えられるため，電位の基準点を $\bm{r}_0$ とすると，
-\[
-  \phi \left( \bm{r} \right) = \int_{\bm{r}}^{\bm{r}_0} \frac{Q}{4 \pi \epsilon_0} \frac{\bm{r}}{r^{3}}  \cdot \mathrm{d}\bm{r}
-\]
-となる．積分を実行して整理すると，
-\[
-  \phi \left( \bm{r} \right) = \frac{Q}{4 \pi \epsilon_0} \left( \frac{1}{r} - \frac{1}{r_0} \right)
-\]
-を得る．電位の基準点 $\bm{r}_0$ を無限遠にとると，点電荷 $Q$ による電位は，
-\begin{equation}
-  \phi \left( \bm{r} \right) = \frac{1}{4 \pi \epsilon_0} \frac{Q}{r}
-\end{equation}
-となる．
-
-\subsubsection{電荷のエネルギー保存則}
+\subsection{電荷のエネルギー保存則}
 時刻 $t = t_1$ において，点 $\bm{r}_1$ で速度 $\bm{v}_1$ を持っていた質量 $m$，電気量 $q$ の電荷にクーロン力 $\bm{f} = q\bm{E}$ がはたらいて，時刻 $t = t_2$ において，点 $\bm{r}_2$ で速度 $\bm{v}_2$ になったとする．この間，電荷の運動方程式は，
 \[
   m \frac{\mathrm{d}\bm{v}}{\mathrm{d}{t}} = q\bm{E}
@@ -204,13 +175,24 @@
 \[
   \int_{\bm{v}_1}^{\bm{v}_2} m\bm{v} \cdot \mathrm{d}\bm{v} = \int_{\bm{r}_1}^{\bm{r}_2} q\bm{E} \cdot \mathrm{d}\bm{r}
 \]
-となる．積分を実行して整理すると，
+となる．(3.1)を代入し，積分を実行して整理すると，
 \begin{equation}
-  \frac{1}{2} m v_1^{2} + q\phi \left( \bm{r}_1 \right) = \frac{1}{2} m v_2^{2} + q\phi \left( \bm{r}_2 \right)
+  \frac{1}{2} m v_1^{2} + q\phi_1 = \frac{1}{2} m v_2^{2} + q\phi_2
 \end{equation}
-を得る．したがって，力学的エネルギーは保存する．\footnote{空間に磁場 $\bm{B}$ が存在し，電荷がローレンツ力 $\bm{f} = q(\bm{E} + \bm{v} \times \bm{B})$ を受けていたとしても，速度 $\bm{v}$ との内積をとると，$\bm{v} \cdot \left( \bm{v} \times \bm{B} \right) = 0$ より， $\bm{f} \cdot \bm{v} = q\bm{E} \cdot \bm{v}$ となる．すなわち，磁場の存在はエネルギー保存則に影響を与えない．}
+を得る．ここで，$\phi_1, \phi_2$ はそれぞれ点 $\bm{r}_1, \bm{r}_2$ におけるスカラー・ポテンシャルである．
+したがって，力学的エネルギーは保存する
+\footnote{空間に磁場 $\bm{B}$ が存在し，電荷がローレンツ力 $\bm{f} = q(\bm{E} + \bm{v} \times \bm{B})$ を受けていたとしても，
+速度 $\bm{v}$ との内積をとると，$\bm{v} \cdot \left( \bm{v} \times \bm{B} \right) = 0$ より，
+$\bm{f} \cdot \bm{v} = q\bm{E} \cdot \bm{v}$ となる．すなわち，磁場の存在はエネルギー保存則に影響を与えない．}．
 
 \section{電流}
+\subsection{電流の定義}
+曲面 $S$ を通過する電流 $I$ は，電流密度 $\bm{j}$ の曲面 $S$ における積分として，
+\[
+  I = \int_S \bm{j} \cdot \mathrm{d}\bm{S}
+\]
+で定義する．ただし，$S$ が閉曲面のときは，$S$ の外へ出る向きを電流の正の向きとする．
+
 \subsection{電荷保存則}
 (2.4)の両辺の発散をとると，
 \[
@@ -237,8 +219,7 @@
 これは電荷保存則を表している．
 
 \section{静磁場}
-\subsection{ビオ・サヴァールの法則}
-\subsubsection{ベクトル・ポテンシャル}
+\subsection{ベクトル・ポテンシャル}
 任意のベクトル場 $\bm{A}$ に対して $\nabla \cdot \left( \nabla \times \bm{A} \right) = 0$ が成り立つことと(2.3)より，
 磁場 $\bm{B}$ はあるベクトル場 $\bm{A}$ の回転として，
 \begin{equation}
@@ -246,7 +227,7 @@
 \end{equation}
 と表すことができる．この $\bm{A}$ は，ベクトル・ポテンシャルと呼ばれる．
 
-電場が時間的に変化しないとき，(2.4)より，
+電場が時間的に変化しないとき，(5.1)を(2.4)に代入すると，
 \[
   \nabla \times \left( \nabla \times \bm{A} \right) = \mu_0 \bm{j}
 \]
@@ -259,33 +240,77 @@
 \begin{equation}
   \bm{A} = \frac{\mu_0}{4 \pi} \int_V \frac{\bm{j}}{r} \, \mathrm{d}{V}
 \end{equation}
-と書くことができる．ただし， $r$ は $\bm{A}$ を定めようとする点から体積要素 $\mathrm{d}{V}$ までの距離である．
+と書くことができる．ここで，$r$ は $\bm{A}$ を定めようとする点から体積要素 $\mathrm{d}{V}$ までの距離である．
 
-\subsubsection{ビオ・サヴァールの法則}
-ベクトル・ポテンシャル $\bm{A}$ が(5.3)で表されるとき，磁場 $\bm{B}$ は，
+\subsection{ビオ・サヴァールの法則}
+ベクトル・ポテンシャル $\bm{A}$ が(5.3)で表されるとき，(5.1)より磁場 $\bm{B}$ は，
 \[
-  \bm{B} = \frac{\mu_0}{4 \pi} \int_V \nabla \times \frac{\bm{j}}{r} \, \mathrm{d}{V}
+  \bm{B} = \frac{\mu_0}{4 \pi} \int_V \left( \nabla \times \frac{\bm{j}}{r} \right) \mathrm{d}{V}
 \]
 となる．$\bm{j}$ は微分の際に一定とみなすことができる．
 また，任意のスカラー $f$ と任意のベクトル $\bm{a}$ に対して $\nabla \times \left( f\bm{a} \right) = f \left( \nabla \times \bm{a} \right) + \left( \nabla f \right) \times \bm{a}$ が成り立つので，
 \[
-  \bm{B} = \frac{\mu_0}{4 \pi} \int_V \nabla \frac{1}{r} \times \bm{j} \, \mathrm{d}{V}
+  \bm{B} = \frac{\mu_0}{4 \pi} \int_V \left( \nabla \left( \frac{1}{r} \right) \times \bm{j} \right) \mathrm{d}{V}
 \]
 つまり，
 \begin{equation}
   \bm{B} = \frac{\mu_0}{4 \pi} \int_V \frac{\bm{j} \times \bm{r}}{r^{3}} \, \mathrm{d}{V}
 \end{equation}
-を得る．ただし，動径ベクトル $\bm{r}$ は $\mathrm{d}V$ から磁場を求めている点に向かう．これは，ビオ・サヴァールの法則と呼ばれる．
+を得る．ただし，動径ベクトル $\bm{r}$ は $\mathrm{d}V$ から磁場を求めている点に向かう．
 
-\subsection{直線電流の周囲の磁場}
-\subsection{円形電流の中心の磁場}
-\subsection{ソレノイドの内部の磁場}
-
-\section{電磁誘導}
-\subsection{自己誘導}
-\subsection{相互誘導}
+電流 $I$ が断面積 $S$ の細い導線 $C$ を流れているとき，導線に沿った微小なベクトルを $\mathrm{d}\bm{s}$ とすると，
+\[
+  \bm{j} \, \mathrm{d}V = I \, \mathrm{d}\bm{s}
+\]
+と書ける．これを(5.4)に代入すると，
+\begin{equation}
+  \bm{B} = \frac{\mu_0 I}{4 \pi} \int_C \frac{\mathrm{d}\bm{s} \times \bm{r}}{r^{3}}
+\end{equation}
+を得る
+\footnote{静磁場では電荷分布が時間的に変化しないため，連続の方程式(4.1)より $\nabla \cdot \bm{j} = 0$ が成り立つ．
+よって電流 $I$ は導線 $C$ 上の位置に依存せず，積分の外に出すことができる．}．これは，ビオ・サヴァールの法則と呼ばれる．
 
 \section{電磁波}
+\subsection{真空中の電磁場}
+真空中の電磁場は，$\rho = 0$，$\bm{j} = 0$ とおいたマクスウェル方程式
+\begin{align}
+  \nabla \cdot \bm{E} &= 0 \\
+  \nabla \times \bm{E} &= - \frac{\partial \bm{B}}{\partial t} \\
+  \nabla \cdot \bm{B} &= 0 \\
+  \nabla \times \bm{B} &= \mu_0 \epsilon_0 \frac{\partial \bm{E}}{\partial t} 
+\end{align}
+で記述される．一度電場が変化すると，(6.4)より，磁場が生じる．これは磁場の変化であるから，(6.2)より，電場が生じる．
+これは電場の変化であるから，(6.4)より，再び磁場が生じる．こうして電場と磁場が波として空間内を伝わる．この波は電磁波と呼ばれる．
+本節では，このような波の性質を調べることにしよう．
+
+\subsection{波動方程式}
+(6.2)の両辺を時間 $t$ に関して微分すると，
+\[
+  \nabla \times \frac{\partial \bm{E}}{\partial t} = - \frac{\partial^{2} \bm{B}}{\partial t^{2}}
+\]
+となる．左辺に(6.4)を代入し，
+$\nabla \times \left( \nabla \times \bm{B} \right) = \nabla \left( \nabla \cdot \bm{B} \right) - \nabla^{2} \bm{B}$ および(6.3)を適応すると，
+\begin{equation}
+  \nabla^{2} \bm{B} = \mu_0 \epsilon_0 \frac{\partial^{2} \bm{B}}{\partial t^{2}}
+\end{equation}
+を得る．
+
+(6.4)の両辺を時間 $t$ に関して微分すると，
+\[
+  \nabla \times \frac{\partial \bm{B}}{\partial t} = \mu_0 \epsilon_0 \frac{\partial^{2} \bm{E}}{\partial t^{2}}
+\]
+となる．左辺に(6.2)を代入し，
+$\nabla \times \left( \nabla \times \bm{E} \right) = \nabla \left( \nabla \cdot \bm{E} \right) - \nabla^{2} \bm{E}$ および(6.1)を適応すると，
+\begin{equation}
+  \nabla^{2} \bm{E} = \mu_0 \epsilon_0 \frac{\partial^{2} \bm{E}}{\partial t^{2}}
+\end{equation}
+を得る．
+
+方程式(6.5)，(6.6)は波動方程式であり，解は速さ
+\[
+  v = \frac{1}{\sqrt{\mu_0 \epsilon_0}}
+\]
+の波である．この値は光速 $c$ と一致する．
 
 \begin{thebibliography}{99}
 \bibitem{ref:book1}
@@ -302,6 +327,8 @@
   長岡洋介, 『電磁気学 Ⅰ 電場と磁場』, 岩波書店, 1982.
 \bibitem{ref:book7}
   長岡洋介, 『電磁気学 Ⅱ 変動する電磁場』, 岩波書店, 1982.
+\bibitem{ref:book8}
+  和達三樹, 『物理のための数学』, 岩波書店, 1983.
 \end{thebibliography}
 
 \end{document}
