@@ -6,76 +6,89 @@
 \usepackage[unicode, hidelinks]{hyperref}
 \numberwithin{equation}{section}
 
-\title{体系電磁気学}
+\title{電磁気学}
 \author{黒瀬諭一朗 \thanks{埼玉県立大宮高等学校}}
 \date{\today}
 \begin{document}
 \maketitle
+\tableofcontents
 
 \section*{はしがき}
-筆者が本書で試みたのは，マクスウェル方程式に基づいて，電磁場の諸性質を系統的に記述することである．
+筆者は電磁気学の専門家ではない．
 筆者の見解では，高校の教科書でみられる電磁気現象の歴史性を加味した記述は，
 何が原理か，何が定義か，何がそれらから導かれる法則かを理解することが難しいものとなっている．
 しかし，これらの区別を明確にすることは物理学の理解においてきわめて重要なことである．
-本書を電磁気学の体系的理解への具体的な1つの方法の提示と受けとめてもらえば，筆者の願いは達成されたことになる．
+本書では，マクスウェル方程式に基づいて電磁場の諸性質を体系的に記述した．
+その際，高校の教科書では扱われていない数学も用いた．必要に応じて、「付録A　電磁気学のための数学」を参照してもらいたい．
+しかしながら，筆者は物理現象の本質が数学にあるとは考えていない．
+物理学では，現象を統一的に説明したり，新しい現象を予言したりするための手段として数学が用いられる．
+本書を電磁気現象を物理として理解する具体的な1つの方法の提示と受け止めてもらえば，筆者の願いは達成されたことになる．
 
-\section{電磁気学の考え方}
-\subsection{場とは何か}
-物理学では，何らかの物理的性質を帯びた空間を場という．例えば，万有引力のはたらく空間を万有引力場という．
-数学的には，場は位置の関数であり，スカラーで表されるスカラー場，ベクトルで表されるベクトル場などがある．
-万有引力場はベクトル場である．
+最後に，筆者はファラデーの電磁誘導の法則が考えている閉曲線またはそれを縁とする面が時間的に変化する場合に成り立つことを示せなかった．
+そのため，本書ではこれが成り立つという事実だけを記した．この部分は本書の大きな弱点といえる．
 
-場という考え方は，近接作用論と密接に関係している．2つの物体の間に万有引力が働くのは，1つの物体があるとその周りに万有引力場が生じ，
-万有引力場が順次伝わってもう1つの物体に力を及ぼすためであると考える．このような場という考え方は，現代物理学では重要な概念になっている．
-
-\subsection{電磁場の定義}
-ある点における，速度 $\bm{v}$ の電荷 $q$ にはたらく力 $\bm{f}$ は，2つの場 $\bm{E}$，$\bm{B}$ を用いて
-\begin{equation}
+\section{電磁気学の基本原理}
+\subsection{電磁場とローレンツ力}
+われわれは実験によって，速度 $\bm{v}$ の電荷 $q$ にはたらく力 $\bm{f}$ は，2つの場 $\bm{E}$，$\bm{B}$ を用いて
+\[
   \bm{f} = q \left( \bm{E} + \bm{v} \times \bm{B} \right)
-\end{equation}
-という形に書くことができる．そこで，$\bm{E}$ を電場，$\bm{B}$ を磁場
+\]
+という形に書くことができることを知っている．そこで，$\bm{E}$ を電場，$\bm{B}$ を磁場
 \footnote{高校の教科書では伝統的に $\bm{B}$ を磁束密度， $\bm{H}$ を磁場と表記するが，磁場を表す本質的な物理量は磁束密度 $\bm{B}$ である．
 そのため，本書では $\bm{B}$ を磁場と表記する．}
 と定義し，電荷は電場と磁場から力を受けると解釈する．
 この電磁場からはたらく力 $\bm{f}$ はローレンツ力と呼ばれる．
 
-\subsection{電荷密度と電流密度の定義}
-電荷密度 $\rho$ を，$\rho \, \mathrm{d}V$ が体積 $\mathrm{d}V$ のなかに含まれた電荷となるように定義する\footnote{電荷は実際には点状であり，空間に連続的に分布したものではないため，$\rho$ は点電荷が位置する点を除いては0である．}．
-このとき，ある領域 $V$ 内の全電荷 $Q$ は，電荷密度の領域 $V$ における積分
+\subsection{重ね合わせの原理}
+われわれは実験によって，電磁場は重ね合わせの原理を満たすことを知っている．この原理の内容は，
+「1つの電荷が場をつくり，他の電荷が第2の場をつくるならば，2つの電荷が一緒につくる場は各電荷が個々につくる場の和である．」
+という命題で表される．
+この命題が真であることは，電荷が場をつくることを教えてくれない
+\footnote{命題 $P \implies Q$ は，$P$ が真かつ $Q$ が偽であるときのみ偽であり，偽でないときは真である．
+そのため，$P$ が偽であるとき $P \implies Q$ は常に真であり，このような命題は空虚な真と呼ばれる．
+命題「筆者が今人と話しているならば，その話し相手はアインシュタインである」は空虚な真である．
+なぜならば，筆者は今本書を黙々と執筆しているからである．}．
+電荷が場をつくる際の法則は，マクスウェル方程式によって記述される．
+
+\subsection{マクスウェル方程式}
+電荷密度 $\rho$ を，$\rho \, \mathrm{d}V$ が体積 $\mathrm{d}V$ のなかに含まれた電荷となるように定義する
+\footnote{領域 $V$ 内の全電荷 $Q$ は，電荷密度 $\rho$ を用いて
 \[
   Q = \int_V \rho \, \mathrm{d}V
 \]
-で表される．
-
-ある点における電荷密度を $\rho$，電荷の速度を $\bm{v}$ とするとき，その点における電流密度 $\bm{j}$ を，
+と表される．ところが，電荷は実際には点状であり，空間に連続的に分布したものではないため，$\rho$ は点電荷が位置する点を除いては0である．
+したがって $\rho$ は，
 \[
-  \bm{j} = \rho \bm{v}
+  \rho = \sum_a q_a \delta^{3} \left( \bm{r} - \bm{r}_a \right)
 \]
-で定義する．
-
-\section{電磁気学の基本原理}
-\subsection{マクスウェル方程式}
-空間における電場 $\bm{E}$ と磁場 $\bm{B}$ は，
-電荷密度 $\rho$ および電流密度 $\bm{j}$ との間に以下の関係を満たす．
-ただし，$\epsilon_0$ は真空の誘電率， $\mu_0$ は真空の透磁率， $t$ は時間である．
+と表すことができる．ここで，和は問題にするすべての電荷にわたり，$\bm{r}_a$ は電荷 $q_a$ の位置ベクトルである．
+デルタ関数 $\delta \left( x \right)$ は0と異なるすべての $x$ に対して0であり，
+\[
+  \int_{- \infty}^{\infty} \delta \left( x \right) \mathrm{d}x = 1
+\]
+となるぐあいに $\delta \left( x \right) = \infty$ である関数として定義される．
+ただし，積分区間は無限ではなくてもよく，$\delta \left( x \right)$ が0にならない点をそれが含むかぎり，任意であって良い．
+3次元のデルタ関数 $\delta^{3} \left( \bm{r} \right)$ も同様に定義することができる．これは0と異なるすべての $\bm{r}$ に対して0であり，
+全空間にわたる積分は1である．このような関数として $\delta^{3} \left( \bm{r} \right) = \delta \left( x \right) \delta \left( y \right) \delta \left( z \right)$ を使うことができる．
+}．
+また，電流密度 $\bm{j}$ を，電荷の速度 $\bm{v}$ を用いて $\bm{j} = \rho \bm{v}$ で定義する．
+真空の誘電率を $\epsilon_0$，真空の透磁率を $\mu_0$，時間を $t$ とすると，
+空間における電場 $\bm{E}$ と磁場 $\bm{B}$ は，$\rho$ および $\bm{j}$ との間に以下の関係を満たす．
 \begin{align}
   \nabla \cdot \bm{E} &= \frac{\rho}{\epsilon_0} \\
   \nabla \times \bm{E} &= - \frac{\partial \bm{B}}{\partial t} \\
   \nabla \cdot \bm{B} &= 0 \\
   \nabla \times \bm{B} &= \mu_0 \bm{j} + \mu_0 \epsilon_0 \frac{\partial \bm{E}}{\partial t} 
 \end{align}
-これらの方程式は，電磁気学現象を考察するときの出発点にとる法則であり，マクスウェル方程式と呼ばれる．
+これらの方程式は電磁気学現象を考察するときの出発点にとる法則であり，マクスウェル方程式と呼ばれる．
 そして，マクスウェル方程式がなぜ成り立つのかは問わない．
 マクスウェル方程式が妥当性を持つかどうかは，これを用いて電磁気学現象がどの程度説明できるかによって判断される．
 
-マクスウェル方程式は点における電磁場の振る舞いを表している．
-そこで，マクスウェル方程式を積分すると，電磁場の空間的な振る舞いを導くことができる．
-電磁場の空間的な振る舞いを表す法則として，
-電場に関するガウスの法則，ファラデーの電磁誘導の法則，磁場に関するガウスの法則，マクスウェル・アンペールの法則
-の4つがある．
+マクスウェル方程式は微分を用いて記述されており，点における電磁場の振る舞いを表す．
+ここでわれわれはマクスウェル方程式を積分することにより，電磁場の空間的な振る舞いを調べることにしよう．
 
 \subsection{電場に関するガウスの法則}
-閉曲面 $S$ で囲まれた領域 $V$ において，(2.1)の両辺を積分すると，
+閉曲面 $S$ で囲まれた領域 $V$ において，(1.1)の両辺を積分すると，
 \[
   \int_V \nabla \cdot \bm{E} \, \mathrm{d}V = \int_V \frac{\rho}{\epsilon_0} \, \mathrm{d}V
 \]
@@ -87,19 +100,23 @@
 これは，電場に関するガウスの法則と呼ばれる．
 
 \subsection{ファラデーの電磁誘導の法則}
-閉曲線 $C$ を縁とする曲面 $S$ において，(2.2)の両辺を積分すると，
+閉曲線 $C$ を縁とする曲面 $S$ において，(1.2)の両辺を積分すると，
 \[
   \int_S \left( \nabla \times \bm{E} \right) \cdot \mathrm{d}\bm{S} = \int_S \left( -\frac{\partial \bm{B}}{\partial t} \right) \cdot \mathrm{d}\bm{S}
 \]
 となる．ストークスの定理を用いると，
 \begin{equation}
-  \oint_C \bm{E} \cdot \mathrm{d}\bm{s} = - \frac{\mathrm{d}}{\mathrm{d}t} \int_S \bm{B} \cdot \mathrm{d}\bm{S}
+  \int_C \bm{E} \cdot \mathrm{d}\bm{s} = - \frac{\mathrm{d}}{\mathrm{d}t} \int_S \bm{B} \cdot \mathrm{d}\bm{S}
 \end{equation}
-を得る．したがって，閉曲線のまわりの電場の循環は，その閉曲線を縁とする面を通る磁束の時間微分に$-1$を掛けたものに等しい．
+を得る．
+したがって，閉曲線のまわりの電場の循環は，その閉曲線を縁とする面を通る磁束の時間微分に$-1$を掛けたものに等しい
+\footnote{積分の際に，閉曲線 $C$ とそれを縁とする面 $S$ を固定したが，
+ファラデーの電磁誘導の法則は $C$ や $S$ が時間的に変化することによって面を通る磁束が変化する場合にも成り立つ．
+しかし，筆者はそれを示すことができなかった．}．
 これは，ファラデーの電磁誘導の法則と呼ばれる．
 
 \subsection{磁場に関するガウスの法則}
-閉曲面 $S$ で囲まれた領域 $V$ において，(2.3)の両辺を積分すると，
+閉曲面 $S$ で囲まれた領域 $V$ において，(1.3)の両辺を積分すると，
 \[
   \int_V \nabla \cdot \bm{B} \, \mathrm{d}V = 0
 \]
@@ -110,80 +127,83 @@
 を得る．したがって，閉曲面を通る磁束は，$0$に等しい．これは，磁場に関するガウスの法則と呼ばれる．
 
 \subsection{マクスウェル・アンペールの法則}
-閉曲線 $C$ を縁とする曲面 $S$ において，(2.4)の両辺を積分すると，
+閉曲線 $C$ を縁とする曲面 $S$ において，(1.4)の両辺を積分すると，
 \[
   \int_S \left( \nabla \times \bm{B} \right) \cdot \mathrm{d}\bm{S} = \int_S \left( \mu_0 \bm{j} + \mu_0 \epsilon_0 \frac{\partial \bm{E}}{\partial t} \right) \cdot \mathrm{d}\bm{S}
 \]
 となる．ストークスの定理を用いると，
 \begin{equation}
-  \oint_C \bm{B} \cdot \mathrm{d}\bm{s} = \mu_0 \left( \int_S \bm{j} \cdot \mathrm{d}\bm{S} + \epsilon_0 \frac{\mathrm{d}}{\mathrm{d}t}\int_S \bm{E} \cdot \mathrm{d}\bm{S} \right)
+  \int_C \bm{B} \cdot \mathrm{d}\bm{s} = \mu_0 \left( \int_S \bm{j} \cdot \mathrm{d}\bm{S} + \epsilon_0 \frac{\mathrm{d}}{\mathrm{d}t}\int_S \bm{E} \cdot \mathrm{d}\bm{S} \right)
 \end{equation}
 を得る．したがって，閉曲線のまわりの磁場の循環は，その閉曲線を縁とする面を通る伝導電流と変位電流の和に真空の透磁率を掛けたものに等しい．
 これは，マクスウェル・アンペールの法則と呼ばれる．
 
 \section{静電場}
-\subsection{スカラー・ポテンシャル}
-任意のスカラー場 $\phi$ に対して $\nabla \times \left( \nabla \phi \right) = 0$ が成り立つことと(2.2)より，
-磁場が時間変化しないとき，電場 $\bm{E}$ はあるスカラー場 $\phi$ の勾配として，
+\subsection{クーロンの法則}
+任意のスカラー場 $\phi$ に対して $\nabla \times \left( \nabla \phi \right) = 0$ が成り立つことと(1.2)より，
+磁場が時間変化しないとき，電場 $\bm{E}$ はただ1つのスカラー場 $\phi$ の勾配として，
 \begin{equation}
   \bm{E} = - \nabla \phi
 \end{equation}
 と表すことができる．この $\phi$ は，スカラー・ポテンシャルと呼ばれる．
 
-(3.1)を(2.1)に代入すると，
+(2.1)を(1.1)に代入すると，
 \begin{equation}
   \nabla^{2} \phi = - \frac{\rho}{\epsilon_0}
 \end{equation}
-となる．この方程式はポアソン方程式と呼ばれる．この方程式の解は，
+が得られる．この方程式はポアソン方程式と呼ばれる．
+
+点電荷のつくる電場を求める．対称性より，電場が電荷 $Q$ のある点からの位置ベクトルの方向を向き，
+電場の大きさ $E$ は電荷からの距離 $r$ のみに依存する．よって，
+電荷を中心とする半径 $r$ の球面および球に電場に関するガウスの法則(1.5)を適用すると，
+\[
+  4 \pi r^{2} E = \frac{Q}{\epsilon_0}
+\]
+つまり
+\[
+  E = \frac{Q}{4 \pi \epsilon_0 r^{2}}
+\]
+が得られる．ベクトル表示では電場 $\bm{E}$ は
+\begin{equation}
+  \bm{E} = \frac{Q \bm{r}}{4 \pi \epsilon_0 r^{3}}
+\end{equation}
+と書ける．これはクーロンの法則と呼ばれる．この電場におけるスカラー・ポテンシャルは明らかに
+\[
+  \phi = \frac{Q}{4 \pi \epsilon_0 r}
+\]
+である．
+
+いくつかの電荷によってつくられる電場は，重ね合わせの原理により，各電荷がつくる電場の和に等しい．
+そのため，この電場におけるスカラー・ポテンシャルは，電荷密度 $\rho$ を用いて
 \begin{equation}
   \phi = \frac{1}{4 \pi \epsilon_0} \int_V \frac{\rho}{r} \, \mathrm{d}{V}
 \end{equation}
-と書ける．ここで，$r$ は $\phi$ を定めようとする点から体積要素 $\mathrm{d}V$ までの距離である．
-
-\subsection{クーロンの法則}
-原点に静止する点電荷 $Q$ がつくる電場 $\bm{E}$ を求める．
-この場のスカラー・ポテンシャル $\phi$ は，(3.3)より，
-\begin{equation}
-  \phi = \frac{1}{4 \pi \epsilon_0} \frac{Q}{r}
-\end{equation}
-となる．このとき，(3.1)より電場 $\bm{E}$ は，
-\[
-  \bm{E} = - \frac{Q}{4 \pi \epsilon_0} \nabla \left( \frac{1}{r} \right)
-\]
-つまり，
-\begin{equation}
-  \bm{E} = \frac{Q}{4 \pi \epsilon_0} \frac{\bm{r}}{r^{3}}
-\end{equation}
-と表せる．
-
-この電場に電荷 $q$ を置くとき，電荷が受ける力 $\bm{f}$ は，(1.1)より，
-\begin{equation}
-  \bm{f} = \frac{Qq}{4 \pi \epsilon_0} \frac{\bm{r}}{r^{3}}
-\end{equation}
-と書ける．これはクーロンの法則と呼ばれ，この電場からはたらく力 $\bm{f}$ はクーロン力と呼ばれる．
+と書ける．ここで $r$ は体積要素 $\mathrm{d}V$ から電場を求めようとする点までの距離である．
 
 \subsection{電荷のエネルギー保存則}
-時刻 $t = t_1$ において，点 $\bm{r}_1$ で速度 $\bm{v}_1$ を持っていた質量 $m$，電気量 $q$ の電荷にクーロン力 $\bm{f} = q\bm{E}$ がはたらいて，時刻 $t = t_2$ において，点 $\bm{r}_2$ で速度 $\bm{v}_2$ になったとする．この間，電荷の運動方程式は，
+質量 $m$，電気量 $q$ の電荷が電磁場中を運動する場合を考える．
+この電荷の速度を $\bm{v}$ とすると，電荷にはローレンツ力 $\bm{f} = q \left( \bm{E} + \bm{v} \times \bm{B} \right)$ がはたらく．
+よって，電荷の運動方程式は
 \[
-  m \frac{\mathrm{d}\bm{v}}{\mathrm{d}{t}} = q\bm{E}
+  m \frac{\mathrm{d}\bm{v}}{\mathrm{d}t} = q \left( \bm{E} + \bm{v} \times \bm{B} \right)
 \]
-である．両辺に速度 $\bm{v}$ の内積をつくり，時間 $t$ に関して $t = t_1$ から $t = t_2$ まで積分すると，
+となる．(2.1)を代入し，速度 $\bm{v}$ との内積をつくると，
 \[
-  \int_{t_1}^{t_2} m\bm{v} \cdot \frac{\mathrm{d}\bm{v}}{\mathrm{d}t} \, \mathrm{d}t = \int_{t_1}^{t_2} q\bm{E} \cdot \frac{\mathrm{d}\bm{r}}{\mathrm{d}t} \, \mathrm{d}t
-\]
-つまり，
+  m \bm{v} \cdot \frac{\mathrm{d}\bm{v}}{\mathrm{d}t} = -q \nabla \phi \cdot \frac{\mathrm{d}\bm{r}}{\mathrm{d}t}
+\]  
+を得る．左辺は
 \[
-  \int_{\bm{v}_1}^{\bm{v}_2} m\bm{v} \cdot \mathrm{d}\bm{v} = \int_{\bm{r}_1}^{\bm{r}_2} q\bm{E} \cdot \mathrm{d}\bm{r}
+  m \bm{v} \cdot \frac{\mathrm{d}\bm{v}}{\mathrm{d}t} = m \left( v_x \frac{\mathrm{d} v_x}{\mathrm{d} t} + v_y \frac{\mathrm{d} v_y}{\mathrm{d} t} + v_z \frac{\mathrm{d} v_z}{\mathrm{d} t} \right) = \frac{\mathrm{d}}{\mathrm{d} t} \left( \frac{1}{2} m v^{2} \right)
 \]
-となる．(3.1)を代入し，積分を実行して整理すると，
-\begin{equation}
-  \frac{1}{2} m v_1^{2} + q\phi_1 = \frac{1}{2} m v_2^{2} + q\phi_2
-\end{equation}
-を得る．ここで，$\phi_1, \phi_2$ はそれぞれ点 $\bm{r}_1, \bm{r}_2$ におけるスカラー・ポテンシャルである．
-したがって，力学的エネルギーは保存する
-\footnote{空間に磁場 $\bm{B}$ が存在し，電荷がローレンツ力 $\bm{f} = q(\bm{E} + \bm{v} \times \bm{B})$ を受けていたとしても，
-速度 $\bm{v}$ との内積をとると，$\bm{v} \cdot \left( \bm{v} \times \bm{B} \right) = 0$ より，
-$\bm{f} \cdot \bm{v} = q\bm{E} \cdot \bm{v}$ となる．すなわち，磁場の存在はエネルギー保存則に影響を与えない．}．
+と変形でき，右辺は
+\[
+  -q \nabla \phi \cdot \frac{\mathrm{d}\bm{r}}{\mathrm{d}t} = -q \left( \frac{\partial \phi}{\partial x} \frac{\mathrm{d}x}{\mathrm{d}t} + \frac{\partial \phi}{\partial y} \frac{\mathrm{d}y}{\mathrm{d}t} + \frac{\partial \phi}{\partial z} \frac{\mathrm{d}z}{\mathrm{d}t} \right) = -q \frac{\mathrm{d} \phi}{\mathrm{d} t}
+\]
+と変形できる．これらから，
+\[
+  \frac{\mathrm{d}}{\mathrm{d}t} \left( \frac{1}{2} m v^2 + q\phi \right) = 0
+\]
+が得られる．したがって，力学的エネルギーは保存する．
 
 \section{電流}
 \subsection{電流の定義}
@@ -194,16 +214,16 @@ $\bm{f} \cdot \bm{v} = q\bm{E} \cdot \bm{v}$ となる．すなわち，磁場�
 で定義する．ただし，$S$ が閉曲面のときは，$S$ の外へ出る向きを電流の正の向きとする．
 
 \subsection{電荷保存則}
-(2.4)の両辺の発散をとると，
+(1.4)の両辺の発散をとると，
 \[
   0 = \mu_0 \nabla \cdot \bm{j} + \mu_0 \epsilon_0 \frac{\partial}{\partial t} \left( \nabla \cdot \bm{E} \right)
 \]
-となる．(2.1)を代入して整理すると，
+となる．(1.1)を代入して整理すると，
 \begin{equation}
   \frac{\partial \rho}{\partial t} + \nabla \cdot \bm{j} = 0
 \end{equation}
 を得る．これは，連続の方程式と呼ばれる．
-閉曲面 $S$ で囲まれた領域 $V$ において(4.1)の両辺を積分すると， 
+閉曲面 $S$ で囲まれた領域 $V$ において(3.1)の両辺を積分すると， 
 \[
   \int_V \frac{\partial \rho}{\partial t} \, \mathrm{d}V + \int_V \nabla \cdot \bm{j} \, \mathrm{d}V = 0
 \]
@@ -220,14 +240,14 @@ $\bm{f} \cdot \bm{v} = q\bm{E} \cdot \bm{v}$ となる．すなわち，磁場�
 
 \section{静磁場}
 \subsection{ベクトル・ポテンシャル}
-任意のベクトル場 $\bm{A}$ に対して $\nabla \cdot \left( \nabla \times \bm{A} \right) = 0$ が成り立つことと(2.3)より，
+任意のベクトル場 $\bm{A}$ に対して $\nabla \cdot \left( \nabla \times \bm{A} \right) = 0$ が成り立つことと(1.3)より，
 磁場 $\bm{B}$ はあるベクトル場 $\bm{A}$ の回転として，
 \begin{equation}
   \bm{B} = \nabla \times \bm{A}
 \end{equation}
 と表すことができる．この $\bm{A}$ は，ベクトル・ポテンシャルと呼ばれる．
 
-電場が時間的に変化しないとき，(5.1)を(2.4)に代入すると，
+電場が時間的に変化しないとき，(4.1)を(1.4)に代入すると，
 \[
   \nabla \times \left( \nabla \times \bm{A} \right) = \mu_0 \bm{j}
 \]
@@ -236,14 +256,14 @@ $\bm{f} \cdot \bm{v} = q\bm{E} \cdot \bm{v}$ となる．すなわち，磁場�
 \begin{equation}
   \nabla^{2} \bm{A} = - \mu_0 \bm{j}
 \end{equation}
-を得る．(5.2)が静電場におけるスカラー・ポテンシャルのポアソン方程式にまったく類似していることに注意すれば，この方程式の解は，
+を得る．(4.2)が静電場におけるスカラー・ポテンシャルのポアソン方程式(2.2)にまったく類似していることに注意すれば，この方程式の解は，
 \begin{equation}
   \bm{A} = \frac{\mu_0}{4 \pi} \int_V \frac{\bm{j}}{r} \, \mathrm{d}{V}
 \end{equation}
-と書くことができる．ここで，$r$ は $\bm{A}$ を定めようとする点から体積要素 $\mathrm{d}{V}$ までの距離である．
+と書けることが類推できる．ここで，$r$ は $\bm{A}$ を定めようとする点から体積要素 $\mathrm{d}{V}$ までの距離である．
 
 \subsection{ビオ・サヴァールの法則}
-ベクトル・ポテンシャル $\bm{A}$ が(5.3)で表されるとき，(5.1)より磁場 $\bm{B}$ は，
+ベクトル・ポテンシャル $\bm{A}$ が(4.3)で表されるとき，(4.1)より磁場 $\bm{B}$ は，
 \[
   \bm{B} = \frac{\mu_0}{4 \pi} \int_V \left( \nabla \times \frac{\bm{j}}{r} \right) \mathrm{d}{V}
 \]
@@ -262,12 +282,12 @@ $\bm{f} \cdot \bm{v} = q\bm{E} \cdot \bm{v}$ となる．すなわち，磁場�
 \[
   \bm{j} \, \mathrm{d}V = I \, \mathrm{d}\bm{s}
 \]
-と書ける．これを(5.4)に代入すると，
+と書ける．これを(4.4)に代入すると，
 \begin{equation}
   \bm{B} = \frac{\mu_0 I}{4 \pi} \int_C \frac{\mathrm{d}\bm{s} \times \bm{r}}{r^{3}}
 \end{equation}
 を得る
-\footnote{静磁場では電荷分布が時間的に変化しないため，連続の方程式(4.1)より $\nabla \cdot \bm{j} = 0$ が成り立つ．
+\footnote{静磁場では電荷分布が時間的に変化しないため，連続の方程式(3.1)より $\nabla \cdot \bm{j} = 0$ が成り立つ．
 よって電流 $I$ は導線 $C$ 上の位置に依存せず，積分の外に出すことができる．}．これは，ビオ・サヴァールの法則と呼ばれる．
 
 \section{電磁波}
@@ -279,38 +299,162 @@ $\bm{f} \cdot \bm{v} = q\bm{E} \cdot \bm{v}$ となる．すなわち，磁場�
   \nabla \cdot \bm{B} &= 0 \\
   \nabla \times \bm{B} &= \mu_0 \epsilon_0 \frac{\partial \bm{E}}{\partial t} 
 \end{align}
-で記述される．一度電場が変化すると，(6.4)より，磁場が生じる．これは磁場の変化であるから，(6.2)より，電場が生じる．
-これは電場の変化であるから，(6.4)より，再び磁場が生じる．こうして電場と磁場が波として空間内を伝わる．この波は電磁波と呼ばれる．
-本節では，このような波の性質を調べることにしよう．
+で記述される．一度電場が変化すると，(5.4)より，磁場が生じる．これは磁場の変化であるから，(5.2)より，電場が生じる．
+これは電場の変化であるから，(5.4)より，再び磁場が生じる．こうして電場と磁場が波として空間内を伝わる．この波は電磁波と呼ばれる．
+ここでわれわれは，このような波の性質を調べることにしよう．
 
 \subsection{波動方程式}
-(6.2)の両辺を時間 $t$ に関して微分すると，
+(5.2)の両辺を時間 $t$ に関して微分すると，
 \[
   \nabla \times \frac{\partial \bm{E}}{\partial t} = - \frac{\partial^{2} \bm{B}}{\partial t^{2}}
 \]
-となる．左辺に(6.4)を代入し，
-$\nabla \times \left( \nabla \times \bm{B} \right) = \nabla \left( \nabla \cdot \bm{B} \right) - \nabla^{2} \bm{B}$ および(6.3)を適応すると，
+となる．左辺に(5.4)を代入し，
+$\nabla \times \left( \nabla \times \bm{B} \right) = \nabla \left( \nabla \cdot \bm{B} \right) - \nabla^{2} \bm{B}$ および(5.3)を適用すると，
 \begin{equation}
   \nabla^{2} \bm{B} = \mu_0 \epsilon_0 \frac{\partial^{2} \bm{B}}{\partial t^{2}}
 \end{equation}
 を得る．
 
-(6.4)の両辺を時間 $t$ に関して微分すると，
+(5.4)の両辺を時間 $t$ に関して微分すると，
 \[
   \nabla \times \frac{\partial \bm{B}}{\partial t} = \mu_0 \epsilon_0 \frac{\partial^{2} \bm{E}}{\partial t^{2}}
 \]
-となる．左辺に(6.2)を代入し，
-$\nabla \times \left( \nabla \times \bm{E} \right) = \nabla \left( \nabla \cdot \bm{E} \right) - \nabla^{2} \bm{E}$ および(6.1)を適応すると，
+となる．左辺に(5.2)を代入し，
+$\nabla \times \left( \nabla \times \bm{E} \right) = \nabla \left( \nabla \cdot \bm{E} \right) - \nabla^{2} \bm{E}$ および(5.1)を適用すると，
 \begin{equation}
   \nabla^{2} \bm{E} = \mu_0 \epsilon_0 \frac{\partial^{2} \bm{E}}{\partial t^{2}}
 \end{equation}
 を得る．
 
-方程式(6.5)，(6.6)は波動方程式であり，解は速さ
+方程式(5.5)，(5.6)は波動方程式であり，解は速さ
 \[
   v = \frac{1}{\sqrt{\mu_0 \epsilon_0}}
 \]
 の波である．この値は光速 $c$ と一致する．
+
+\appendix
+\section{電磁気学のための数学}
+\subsection{ベクトルの微分}
+\paragraph{ナブラ演算子}
+ナブラ演算子 $\nabla$ は，
+\[
+  \nabla = \left( \frac{\partial}{\partial x}, \frac{\partial}{\partial y}, \frac{\partial}{\partial z} \right)
+\]
+で定義される．
+\paragraph{勾配}
+関数 $\phi \left(x, y, z \right)$ の勾配は，
+\[
+  \nabla \phi = \left( \frac{\partial \phi}{\partial x}, \frac{\partial \phi}{\partial y}, \frac{\partial \phi}{\partial z} \right)
+\]
+で定義される．
+\paragraph{発散}
+ベクトル $\bm{A} \left(x, y, z \right)$ の発散は，
+\[
+  \nabla \cdot \bm{A} = \frac{\partial A_x}{\partial x} + \frac{\partial A_y}{\partial y} + \frac{\partial A_z}{\partial z}
+\]
+で定義される．
+\paragraph{回転}
+ベクトル $\bm{A} \left(x, y, z \right)$ の回転は，
+\[
+  \nabla \times \bm{A} = \left( \frac{\partial A_z}{\partial y} - \frac{\partial A_y}{\partial z}, \frac{\partial A_x}{\partial z} - \frac{\partial A_z}{\partial x}, \frac{\partial A_y}{\partial x} - \frac{\partial A_x}{\partial y} \right)
+\]
+で定義される．
+\paragraph{ラプラスの演算子}
+ラプラスの演算子 $\nabla^{2}$ は，
+\[
+  \nabla^{2} = \frac{\partial^{2}}{\partial x^{2}} + \frac{\partial^{2}}{\partial y^{2}} + \frac{\partial^{2}}{\partial z^{2}}
+\]
+で定義される．
+\paragraph{公式}
+ナブラ演算子を含んだ公式をまとめる．
+\begin{align}
+  &\nabla \left( \phi \psi \right) = \phi \nabla \psi + \psi \nabla \phi \\
+  &\nabla \cdot \left( \phi \bm{A} \right) = \left( \nabla \phi \right) \cdot \bm{A} + \phi \left( \nabla \cdot \bm{A} \right) \\
+  &\nabla \times \left( \phi \bm{A} \right) = \left( \nabla \phi \right) \times \bm{A} + \phi \left( \nabla \times \bm{A} \right) \\
+  &\nabla \cdot \left( \bm{A} \times \bm{B} \right) = \bm{B} \cdot \left( \nabla \times \bm{A} \right) - \bm{A} \cdot \left( \nabla \times \bm{B} \right) \\
+  &\nabla \times \left( \bm{A} \times \bm{B} \right) = \left( \bm{B} \cdot \nabla \right) \bm{A} - \bm{B} \left( \nabla \cdot \bm{A} \right) - \left( \bm{A} \cdot \nabla \right) \bm{B} + \bm{A} \left( \nabla \cdot \bm{B} \right) \\
+  &\nabla \left( \bm{A} \cdot \bm{B} \right) = \left( \bm{B} \cdot \nabla \right) \bm{A} + \left( \bm{A} \cdot \nabla \right) \bm{B} + \bm{B} \times \left( \nabla \times \bm{A} \right) + \bm{A} \times \left( \nabla \times \bm{B} \right) \\
+  &\nabla \times \left( \nabla \phi \right) = 0 \\
+  &\nabla \cdot \left( \nabla \times \bm{A} \right) = 0 \\
+  &\nabla \times \left( \nabla \times \bm{A} \right) = \nabla \left( \nabla \cdot \bm{A} \right) - \nabla^{2} \bm{A}
+\end{align}
+
+\subsection{線積分，面積分，体積積分}
+\paragraph{線積分}
+曲線 $C$ を考える．$\bm{A}\left( x, y, z \right)$ は $C$ 上のすべての点で定義されたベクトル関数であるとする．
+曲線 $C$ 上に $n - 1$ 個の点 $\left( x_1, y_1, z_1 \right), \left( x_2, y_2, z_2 \right), \dots, \left( x_{n - 1}, y_{n - 1}, z_{n - 1} \right)$ をとり，
+$n$ 個の部分に分ける．始点を $\left( x_0, y_0, z_0 \right)$，終点を $\left( x_n, y_n, z_n \right)$ として，
+$\Delta x_k = x_k - x_{k - 1}$，$\Delta y_k = y_k - y_{k - 1}$, $\Delta z_k = z_k - z_{k - 1}$ とおく．
+点 $\left( x_k, y_k, z_k \right)$ と点 $\left( x_{k - 1}, y_{k - 1}, z_{k - 1} \right)$ の間の $C$ 上のある点を $\left( \xi_k, \eta_k, \zeta_k \right)$ とし，和
+\[
+  \sum_{k = 1}^{n} \left( A_x \left(\xi_k, \eta_k, \zeta_k \right) \Delta x_k + A_y \left(\xi_k, \eta_k, \zeta_k \right) \Delta y_k + A_z \left(\xi_k, \eta_k, \zeta_k \right) \Delta z_k \right)
+\]
+をつくる．すべての $\Delta x_k$，$\Delta y_k$，$\Delta z_k$ が0に近づくように，分割の数 $n$ を大きくしたときの極限値を線積分といい，
+\[
+  \int_C \left[ A_x \left(x, y, z \right) \mathrm{d}x + A_y \left(x, y, z \right) \mathrm{d}y + A_z \left(x, y, z \right) \mathrm{d}z \right]
+\]
+と表す．
+$\bm{A}$ と $\mathrm{d}\bm{r} = \left( \mathrm{d}x, \mathrm{d}y, \mathrm{d}z \right)$ の内積を用いると，線積分は
+\[
+  \int_C \bm{A} \cdot \mathrm{d}\bm{r}
+\]
+と書ける．
+\paragraph{面積分}
+曲面 $S$ を考える．$\phi \left( x, y, z \right)$ は $S$ 上のすべての点で定義された関数であるとする．
+曲面 $S$ を面積 $\Delta S_k \left( k = 1, 2, \dots, n \right)$ の $n$ 個の領域に分割し，
+その領域上のある点を $\left( \xi_k, \eta_k, \zeta_k \right)$ として，和
+\[
+  \sum_{k = 1}^{n} \phi \left( \xi_k, \eta_k, \zeta_k \right) \Delta S_k
+\]
+をつくる．各 $\Delta S_k$ が0に近づくように $n$ を大きくするときの極限値を面積分といい，
+\[
+  \int_S \phi \left(x, y, z \right) \mathrm{d}S
+\]
+と表す．
+
+$\bm{A} \left( x, y, z \right) $ を $S$ 上のすべての点で定義されたベクトル関数とする．$S$ 上の各点における，
+曲面の単位法線ベクトル $\bm{n}$ との内積 $\bm{A} \cdot \bm{n}$ の $S$ 上の面積分
+\[
+  \int_S \bm{A} \cdot \bm{n} \, \mathrm{d}S
+\]
+を $S$ 上の $\bm{A}$ の面積分といい，
+\[
+  \int_S \bm{A} \cdot \mathrm{d}\bm{S}
+\]
+と書く．
+\paragraph{体積積分}
+閉曲面で囲まれた領域を $V$ とする．$\phi \left( x, y, z \right)$ は $V$ 上のすべての点で定義された関数であるとする．
+領域 $V$ を体積 $\Delta V_k \left( k = 1, 2, \dots, n \right)$ の $n$ 個の領域に分割し，
+その領域上のある点を $\left( \xi_k, \eta_k, \zeta_k \right)$ として，和
+\[
+  \sum_{k = 1}^{n} \phi \left( \xi_k, \eta_k, \zeta_k \right) \Delta V_k
+\]
+をつくる．各領域の直径が0に近づくように $n$ を大きくするときの極限値を体積積分といい，
+\[
+  \int_V \phi \left( x, y, z \right) \mathrm{d}V
+\]
+と表す．
+
+$\bm{A} \left( x, y, z \right) $ を $V$ 上のすべての点で定義されたベクトル関数とする．$\bm{A}$ の $V$ 上の体積積分は，
+\[
+  \int_V \bm{A} \, \mathrm{d}V = \left( \int_V A_x \, \mathrm{d}V, \int_V A_y \, \mathrm{d}V, \int_V A_z \, \mathrm{d}V \right)
+\]
+で定義される．
+
+\subsection{積分定理}
+\paragraph{ガウスの定理}
+閉曲面 $S$ で囲まれた領域を $V$ とする．体積積分を面積分，あるいは面積分を体積積分に変える数学公式
+\begin{equation}
+  \int_S \bm{A} \cdot \mathrm{d}\bm{S} = \int_V \nabla \cdot \bm{A} \, \mathrm{d}V
+\end{equation}
+をガウスの定理という．
+\paragraph{ストークスの定理}
+閉曲線 $C$ を縁とする曲面を $S$ とする．線積分を面積分，あるいは面積分を線積分に変える数学公式
+\begin{equation}
+  \int_C \bm{A} \cdot \mathrm{d}\bm{r} = \int_S \left( \nabla \times \bm{A} \right) \cdot \mathrm{d}\bm{S}
+\end{equation}
+をストークスの定理という．
+
 
 \begin{thebibliography}{99}
 \bibitem{ref:book1}
